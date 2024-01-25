@@ -1,9 +1,9 @@
 package com.example.todo2.tareas
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,6 +21,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
@@ -34,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.todo2.ui.theme.TODO2Theme
 
-class Registro : ComponentActivity() {
+class LoginVista : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -76,7 +77,7 @@ fun RegisterScreen() {
 
             // Bienvenido
             Text(
-                text = "Bienvenido",
+                text = "Inicio de sesión",
                 style = TextStyle(
                     fontWeight = FontWeight.W700,
                     color = Color(0xE5000000),
@@ -88,7 +89,7 @@ fun RegisterScreen() {
 
             // Vamos a registrarnos
             Text(
-                text = "Vamos a registrarnos",
+                text = "¡Hola de nuevo! Inicia sesión aquí.",
                 style = TextStyle(
                     fontWeight = FontWeight.Normal,
                     color = Color.Black.copy(alpha = 0.5f), // Color negro apagado
@@ -120,21 +121,15 @@ fun RegisterScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
+                    .clip(RoundedCornerShape(16.dp))
 
             )
-            TextField(
-                value = email,
-                onValueChange = { email = it },
-                placeholder = { Text("Email") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp)
-            )
+
 
             TextField(
                 value = password,
                 onValueChange = { password = it },
-                placeholder = { Text("contraseña") },
+                placeholder = { Text("Contraseña") },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                 keyboardActions = KeyboardActions(
@@ -143,21 +138,11 @@ fun RegisterScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
+                    .border(width = 1.dp, color = Color.Black) // Agrega el borde negro
+
             )
 
-            TextField(
-                value = password,
-                onValueChange = { password = it },
-                placeholder = { Text("Confirmar contraseña") },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                keyboardActions = KeyboardActions(
-                    onDone = { keyboardController?.hide() }
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp)
-            )
+
 
             Spacer(modifier = Modifier.height(56.dp))
             Button(
@@ -173,9 +158,14 @@ fun RegisterScreen() {
                     containerColor = Color(0xFF62D2C3),
                     contentColor = Color.Black),
 
-            ) {
+                ) {
                 Text(
-                    text = "Registrarse")
+                    text = "Enviar",
+                    style = TextStyle(
+                        fontSize = 24.sp, // Ajusta el tamaño de la fuente según tus preferencias
+                        fontWeight = FontWeight.Bold
+                    )
+                )
             }
 
 
