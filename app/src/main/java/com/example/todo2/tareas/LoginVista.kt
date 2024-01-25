@@ -1,18 +1,29 @@
 package com.example.todo2.tareas
 
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.rounded.AccountCircle
+import androidx.compose.material.icons.rounded.DateRange
+import androidx.compose.material.icons.rounded.List
+import androidx.compose.material.icons.twotone.Info
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -50,12 +61,12 @@ class LoginVista : ComponentActivity() {
         }
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun RegisterScreen() {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
 
     val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -63,19 +74,16 @@ fun RegisterScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 0.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Columna para los textos "Bienvenido" y "Vamos a registrarnos"
+        // Textos de bienvenida
         Column(
-            modifier = Modifier.padding(top = 0.dp, bottom = 16.dp), // Ajusta el padding aquí
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
             Spacer(modifier = Modifier.height(106.dp))
 
-            // Bienvenido
             Text(
                 text = "Inicio de sesión",
                 style = TextStyle(
@@ -87,12 +95,11 @@ fun RegisterScreen() {
                 modifier = Modifier.padding(bottom = 15.dp)
             )
 
-            // Vamos a registrarnos
             Text(
                 text = "¡Hola de nuevo! Inicia sesión aquí.",
                 style = TextStyle(
                     fontWeight = FontWeight.Normal,
-                    color = Color.Black.copy(alpha = 0.5f), // Color negro apagado
+                    color = Color.Black.copy(alpha = 0.5f),
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp
                 ),
@@ -101,7 +108,7 @@ fun RegisterScreen() {
             Spacer(modifier = Modifier.height(36.dp))
         }
 
-        // Columna principal para los TextField y el Button
+        // Campos de texto y botón de enviar
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -121,10 +128,8 @@ fun RegisterScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
-                    .clip(RoundedCornerShape(16.dp))
 
             )
-
 
             TextField(
                 value = password,
@@ -138,40 +143,77 @@ fun RegisterScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
-                    .border(width = 1.dp, color = Color.Black) // Agrega el borde negro
-
+                    .clip(RoundedCornerShape(16.dp))
+                    .border(width = 1.dp, color = Color.Black) // Borde negro
             )
 
-
-
             Spacer(modifier = Modifier.height(56.dp))
+
             Button(
                 onClick = {
-                    // Perform registration logic here
-                },
 
+                    // Lógica de inicio de sesión
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(52.dp),
-                shape = RoundedCornerShape(6.dp), // Ajusta el radio de las esquinas según tus preferencias
+                shape = RoundedCornerShape(6.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF62D2C3),
-                    contentColor = Color.Black),
-
-                ) {
+                    contentColor = Color.Black
+                )
+            ) {
                 Text(
                     text = "Enviar",
                     style = TextStyle(
-                        fontSize = 24.sp, // Ajusta el tamaño de la fuente según tus preferencias
+                        fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
                     )
                 )
             }
+        }
+        Spacer(modifier = Modifier.weight(1f))
 
+        BottomNavigation()
+
+    }
+
+
+}
+@Composable
+fun BottomNavigation() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(66.dp)
+            .background(color = Color(0xFF62D2C3)), // Cambiar a color verde
+
+
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        IconButton(onClick = { /* Acción para el primer ícono */ }
+
+        ) {
+
+            Icon(Icons.Rounded.List,
+                contentDescription = null,
+                modifier = Modifier.size(78.dp) // Ajustamos el tamaño del ícono
+            )
+
+
+        }
+
+        IconButton(onClick = { /* Acción para el segundo ícono */ }) {
+            Icon(Icons.Rounded.AccountCircle, contentDescription = null,  modifier = Modifier.size(78.dp))
+        }
+        IconButton(onClick = { /* Acción para el nuevo ícono */ }) {
+           Icon(Icons.TwoTone.Info, contentDescription = null,  modifier = Modifier.size(78.dp))
 
         }
     }
 }
+
 
 
 
@@ -180,5 +222,6 @@ fun RegisterScreen() {
 fun DefaultPreview() {
     TODO2Theme {
         RegisterScreen()
+
     }
 }

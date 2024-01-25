@@ -3,6 +3,7 @@ package com.example.todo2.tareas
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -121,7 +122,6 @@ class RegistroVista : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp)
-                        .clip(RoundedCornerShape(16.dp))
 
 
                 )
@@ -148,9 +148,10 @@ class RegistroVista : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp)
-                        .border(width = 1.dp, color = Color.Black) // Agrega el borde negro
-
+                        .clip(RoundedCornerShape(24.dp)) // Ajustamos el radio de la esquina para hacer los bordes más suaves
+                        .border(BorderStroke(1.dp, Color.Black), RoundedCornerShape(24.dp)) // Definimos un borde negro y suave
                 )
+
 
                 TextField(
                     value = password,
@@ -198,6 +199,7 @@ class RegistroVista : ComponentActivity() {
 
             }
         }
+
     }
 
 
