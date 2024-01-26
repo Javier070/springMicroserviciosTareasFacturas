@@ -2,6 +2,8 @@ package com.example.todo2.tareas
 
 
 
+
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,7 +15,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.List
@@ -43,6 +47,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -50,7 +55,7 @@ import androidx.compose.ui.unit.sp
 import com.example.todo2.ui.theme.TODO2Theme
 
 
-class LoginVista : ComponentActivity() {
+class Residuos : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -59,7 +64,7 @@ class LoginVista : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RegisterScreen()
+                    Screen1()
                 }
             }
         }
@@ -68,7 +73,7 @@ class LoginVista : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun RegisterScreen() {
+fun Screen1() {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -110,6 +115,8 @@ fun RegisterScreen() {
                 modifier = Modifier.padding(bottom = 16.dp)
             )
             Spacer(modifier = Modifier.height(36.dp))
+
+
         }
 
         // Campos de texto y botón de enviar
@@ -151,114 +158,121 @@ fun RegisterScreen() {
                     .border(width = 1.dp, color = Color.Black) // Borde negro
             )
 
+
+            val (checkedState, onStateChange) = remember { mutableStateOf(true) }
+
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+                    .toggleable(
+                        value = checkedState,
+                        onValueChange = { onStateChange(!checkedState) },
+                        role = Role.Checkbox
+                    )
+                    .padding(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    Checkbox(
+                        checked = checkedState,
+                        onCheckedChange = null // null recommended for accessibility with screenreaders
+                    )
+                    Text(
+                        text = "Recoger al bebe",
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
+                }
+
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    Checkbox(
+                        checked = checkedState,
+                        onCheckedChange = null // null recommended for accessibility with screenreaders
+                    )
+                    Text(
+                        text = "Recoger al coche",
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
+                }
+
+            }
             Spacer(modifier = Modifier.height(56.dp))
 
-            Button(
-                onClick = {
 
-                    // Lógica de inicio de sesión
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(52.dp),
-                shape = RoundedCornerShape(6.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF62D2C3),
-                    contentColor = Color.Black
-                )
-            ) {
-                Text(
-                    text = "Enviar",
-                    style = TextStyle(
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            }
-        }
-        Spacer(modifier = Modifier.weight(1f))
-        val (checkedState, onStateChange) = remember { mutableStateOf(true) }
-
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .height(56.dp)
-                .toggleable(
-                    value = checkedState,
-                    onValueChange = { onStateChange(!checkedState) },
-                    role = Role.Checkbox
-                )
-                .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-
-
-           
-
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(
-                    checked = checkedState,
-                    onCheckedChange = null // null recommended for accessibility with screenreaders
-                )
-                Text(
-                    text = "Ir al supermercado",
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            }
         }
 
+        var busca by remember { mutableStateOf("") }
+
+        SearchBar1(
+            text = busca,
+            onTextChanged = { busca = it },
+            onSearchClick = { /* Lógica de búsqueda */ },
+            onClearClick = { /* Lógica para limpiar la búsqueda */ }
+        )
 
 
 
-        BottomNavigation()
+
 
     }
 
 
 }
+
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BottomNavigation() {
+fun SearchBar1(
+    text: String,
+    onTextChanged: (String) -> Unit,
+    onSearchClick: () -> Unit,
+    onClearClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(66.dp)
-            .background(color = Color(0xFF62D2C3)), // Cambiar a color verde
-
-
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround
+            .padding(8.dp)
     ) {
-        IconButton(onClick = { /* Acción para el primer ícono */ }
+        // Campo de texto de búsqueda
+        TextField(
+            value = text,
+            onValueChange = { onTextChanged(it) },
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
+            modifier = Modifier
+                .weight(1f)
+                .background(MaterialTheme.colorScheme.surface),
+            placeholder = { Text("Buscar") }
+        )
 
+        // Botón de búsqueda
+        IconButton(
+            onClick = { onSearchClick() },
+            modifier = Modifier.padding(start = 8.dp)
         ) {
-
-            Icon(Icons.Rounded.List,
-                contentDescription = null,
-                modifier = Modifier.size(78.dp) // Ajustamos el tamaño del ícono
-            )
-
-
+            Icon(imageVector = Icons.Default.Search, contentDescription = null)
         }
 
-        IconButton(onClick = { /* Acción para el segundo ícono */ }) {
-            Icon(Icons.Rounded.AccountCircle, contentDescription = null,  modifier = Modifier.size(78.dp))
-        }
-        IconButton(onClick = { /* Acción para el nuevo ícono */ }) {
-           Icon(Icons.TwoTone.Info, contentDescription = null,  modifier = Modifier.size(78.dp))
-
+        // Botón de limpiar búsqueda
+        if (text.isNotEmpty()) {
+            IconButton(
+                onClick = { onClearClick() },
+                modifier = Modifier.padding(start = 8.dp)
+            ) {
+                Icon(imageVector = Icons.Default.Clear, contentDescription = null)
+            }
         }
     }
 }
-
 
 
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun Preview() {
     TODO2Theme {
-        RegisterScreen()
+        Screen1()
 
     }
 }

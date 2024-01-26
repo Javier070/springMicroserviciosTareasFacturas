@@ -14,7 +14,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Search
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -72,7 +71,6 @@ class RegistroVista : ComponentActivity() {
         var username by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var email by remember { mutableStateOf("") }
-        var busca by remember { mutableStateOf("") }
 
         val focusManager = LocalFocusManager.current
         val keyboardController = LocalSoftwareKeyboardController.current
@@ -212,12 +210,7 @@ class RegistroVista : ComponentActivity() {
                     )
 
                 }
-                SearchBar(
-                    text = busca,
-                    onTextChanged = { busca = it },
-                    onSearchClick = { /* Lógica de búsqueda */ },
-                    onClearClick = { /* Lógica para limpiar la búsqueda */ }
-                )
+
 
 
 
@@ -234,53 +227,10 @@ class RegistroVista : ComponentActivity() {
     fun DefaultPreview() {
         TODO2Theme {
             RegisterScreen()
+
         }
     }
 }
 
 
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun SearchBar(
-    text: String,
-    onTextChanged: (String) -> Unit,
-    onSearchClick: () -> Unit,
-    onClearClick: () -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        // Campo de texto de búsqueda
-        TextField(
-            value = text,
-            onValueChange = { onTextChanged(it) },
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
-            modifier = Modifier
-                .weight(1f)
-                .background(MaterialTheme.colorScheme.surface),
-            placeholder = { Text("Buscar") }
-        )
-
-        // Botón de búsqueda
-        IconButton(
-            onClick = { onSearchClick() },
-            modifier = Modifier.padding(start = 8.dp)
-        ) {
-            Icon(imageVector = Icons.Default.Search, contentDescription = null)
-        }
-
-        // Botón de limpiar búsqueda
-        if (text.isNotEmpty()) {
-            IconButton(
-                onClick = { onClearClick() },
-                modifier = Modifier.padding(start = 8.dp)
-            ) {
-                Icon(imageVector = Icons.Default.Clear, contentDescription = null)
-            }
-        }
-    }
-}
 
