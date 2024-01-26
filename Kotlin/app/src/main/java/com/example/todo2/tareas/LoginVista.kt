@@ -193,18 +193,11 @@ fun RegisterScreen() {
         ) {
 
 
-           
+
 
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(
-                    checked = checkedState,
-                    onCheckedChange = null // null recommended for accessibility with screenreaders
-                )
-                Text(
-                    text = "Ir al supermercado",
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
+
+
             }
         }
 
