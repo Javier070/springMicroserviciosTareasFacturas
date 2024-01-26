@@ -129,7 +129,7 @@ class RegistroVista : ComponentActivity() {
                 TextField(
                     value = username,
                     onValueChange = { username = it },
-                    placeholder = { Text("Nombre de usuario") },
+                    placeholder = { Text("Nombre deeeeee usuario") },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                     keyboardActions = KeyboardActions(
