@@ -8,12 +8,19 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Search
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -25,13 +32,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.todo2.ui.theme.TODO2Theme
@@ -57,6 +72,7 @@ class RegistroVista : ComponentActivity() {
         var username by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var email by remember { mutableStateOf("") }
+        var busca by remember { mutableStateOf("") }
 
         val focusManager = LocalFocusManager.current
         val keyboardController = LocalSoftwareKeyboardController.current
@@ -194,15 +210,25 @@ class RegistroVista : ComponentActivity() {
                             fontWeight = FontWeight.Bold
                         )
                     )
+
                 }
+                SearchBar(
+                    text = busca,
+                    onTextChanged = { busca = it },
+                    onSearchClick = { /* Lógica de búsqueda */ },
+                    onClearClick = { /* Lógica para limpiar la búsqueda */ }
+                )
+
 
 
             }
+
         }
 
     }
 
 
+    //El Preview
     @Preview(showBackground = true)
     @Composable
     fun DefaultPreview() {
@@ -211,3 +237,50 @@ class RegistroVista : ComponentActivity() {
         }
     }
 }
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SearchBar(
+    text: String,
+    onTextChanged: (String) -> Unit,
+    onSearchClick: () -> Unit,
+    onClearClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+        // Campo de texto de búsqueda
+        TextField(
+            value = text,
+            onValueChange = { onTextChanged(it) },
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
+            modifier = Modifier
+                .weight(1f)
+                .background(MaterialTheme.colorScheme.surface),
+            placeholder = { Text("Buscar") }
+        )
+
+        // Botón de búsqueda
+        IconButton(
+            onClick = { onSearchClick() },
+            modifier = Modifier.padding(start = 8.dp)
+        ) {
+            Icon(imageVector = Icons.Default.Search, contentDescription = null)
+        }
+
+        // Botón de limpiar búsqueda
+        if (text.isNotEmpty()) {
+            IconButton(
+                onClick = { onClearClick() },
+                modifier = Modifier.padding(start = 8.dp)
+            ) {
+                Icon(imageVector = Icons.Default.Clear, contentDescription = null)
+            }
+        }
+    }
+}
+

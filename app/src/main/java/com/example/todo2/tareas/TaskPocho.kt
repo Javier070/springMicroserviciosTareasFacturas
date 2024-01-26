@@ -154,7 +154,7 @@ fun MiPantalla() {
             Column(
 
             ) {
-                TaskItem("Ejemplo de tarea 1", false)
+                TaskItem("Ejemplo de tarea 1", true)
                 TaskItem("Ejemplo de tarea 2", true)
                 TaskItem("Ejemplo de tarea 4", false)
                 // Puedes agregar más tareas según sea necesario

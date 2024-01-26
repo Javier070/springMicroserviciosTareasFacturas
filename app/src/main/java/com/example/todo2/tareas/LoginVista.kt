@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -20,6 +21,7 @@ import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -37,6 +39,7 @@ import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -45,6 +48,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.todo2.ui.theme.TODO2Theme
+
 
 class LoginVista : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -173,6 +177,59 @@ fun RegisterScreen() {
             }
         }
         Spacer(modifier = Modifier.weight(1f))
+        val (checkedState, onStateChange) = remember { mutableStateOf(true) }
+
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .toggleable(
+                    value = checkedState,
+                    onValueChange = { onStateChange(!checkedState) },
+                    role = Role.Checkbox
+                )
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Checkbox(
+                    checked = checkedState,
+                    onCheckedChange = null // null recommended for accessibility with screenreaders
+                )
+                Text(
+                    text = "Recoger al bebe",
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            }
+
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Checkbox(
+                    checked = checkedState,
+                    onCheckedChange = null // null recommended for accessibility with screenreaders
+                )
+                Text(
+                    text = "Recoger al coche",
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            }
+
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Checkbox(
+                    checked = checkedState,
+                    onCheckedChange = null // null recommended for accessibility with screenreaders
+                )
+                Text(
+                    text = "Ir al supermercado",
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            }
+        }
+
+
+
 
         BottomNavigation()
 
