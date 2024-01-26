@@ -148,6 +148,7 @@ class RegistroVista : ComponentActivity() {
                         .padding(vertical = 8.dp)
                         .clip(RoundedCornerShape(16.dp))
 
+
                 )
 
                 TextField(

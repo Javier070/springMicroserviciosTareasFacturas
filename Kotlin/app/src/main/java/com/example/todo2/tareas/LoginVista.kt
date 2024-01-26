@@ -17,6 +17,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.List
+import androidx.compose.material.icons.twotone.AccountBalanceWallet
 import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
@@ -238,7 +239,7 @@ fun BottomNavigation() {
             Icon(Icons.Rounded.AccountCircle, contentDescription = null,  modifier = Modifier.size(78.dp))
         }
         IconButton(onClick = { /* Acción para el nuevo ícono */ }) {
-           Icon(Icons.TwoTone.Info, contentDescription = null,  modifier = Modifier.size(78.dp))
+           Icon(Icons.TwoTone.AccountBalanceWallet, contentDescription = null,  modifier = Modifier.size(78.dp))
 
         }
     }
