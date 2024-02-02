@@ -1,0 +1,77 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.todo2.app-mergeDebugResources-52:/values-hr/values-hr.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\jamom\\.gradle\\caches\\transforms-3\\3931ad7eb9dd4136015071a12e5891dc\\transformed\\core-1.10.0\\res\\values-hr\\values-hr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,260,357,456,560,664,781",
+                        "endColumns": "97,106,96,98,103,103,116,100",
+                        "endOffsets": "148,255,352,451,555,659,776,877"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,27",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,203,310,407,506,610,714,2406",
+                        "endColumns": "97,106,96,98,103,103,116,100",
+                        "endOffsets": "198,305,402,501,605,709,826,2502"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\jamom\\.gradle\\caches\\transforms-3\\bea1eee80b222a35a0bce3f80cf8bcec\\transformed\\ui-release\\res\\values-hr\\values-hr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,210,297,391,490,580,659,752,847,932,1004,1075,1156,1242,1315,1394,1464",
+                        "endColumns": "104,86,93,98,89,78,92,94,84,71,70,80,85,72,78,69,117",
+                        "endOffsets": "205,292,386,485,575,654,747,842,927,999,1070,1151,1237,1310,1389,1459,1577"
+                    },
+                    "to": {
+                        "startLines": "9,10,13,14,16,18,19,20,21,22,23,24,25,26,28,29,30",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "831,936,1230,1324,1504,1671,1750,1843,1938,2023,2095,2166,2247,2333,2507,2586,2656",
+                        "endColumns": "104,86,93,98,89,78,92,94,84,71,70,80,85,72,78,69,117",
+                        "endOffsets": "931,1018,1319,1418,1589,1745,1838,1933,2018,2090,2161,2242,2328,2401,2581,2651,2769"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\jamom\\.gradle\\caches\\transforms-3\\9cc0b765caf38179c734d10b72e03aed\\transformed\\material3-1.0.0\\res\\values-hr\\values-hr.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,130,211",
+                        "endColumns": "74,80,76",
+                        "endOffsets": "125,206,283"
+                    },
+                    "to": {
+                        "startLines": "11,15,17",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "1023,1423,1594",
+                        "endColumns": "74,80,76",
+                        "endOffsets": "1093,1499,1666"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\jamom\\.gradle\\caches\\transforms-3\\3cd826bf5950243f3f3f45afac62b482\\transformed\\play-services-basement-18.1.0\\res\\values-hr\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "127",
+                        "endOffsets": "322"
+                    },
+                    "to": {
+                        "startLines": "12",
+                        "startColumns": "4",
+                        "startOffsets": "1098",
+                        "endColumns": "131",
+                        "endOffsets": "1225"
+                    }
+                }
+            ]
+        }
+    ]
+}
