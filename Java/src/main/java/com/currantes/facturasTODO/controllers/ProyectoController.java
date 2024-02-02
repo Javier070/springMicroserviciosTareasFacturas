@@ -8,7 +8,7 @@ import com.currantes.facturasTODO.entities_model.Proyecto; // Asegúrate de impo
 
 import java.util.List;
 import java.util.Optional;
-
+//hola
 @RestController
 @RequestMapping("/proyecto")
    public class ProyectoController { // soy clase
