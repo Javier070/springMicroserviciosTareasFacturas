@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Repository
 public class ProyectoDaoImpl implements ProyectoDao {// poder implementar lo métodos creados por nosotros
     //que seran sobreescritos usando la lógica de JPA
@@ -36,5 +39,10 @@ public class ProyectoDaoImpl implements ProyectoDao {// poder implementar lo mé
         proyectoRepository.deleteById(id);
 
 
+    }
+
+    @Override
+    public void modificar(Proyecto proyecto) {
+        proyectoRepository.save(proyecto);
     }
 }

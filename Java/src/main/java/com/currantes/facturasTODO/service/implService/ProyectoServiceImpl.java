@@ -28,13 +28,25 @@ public class ProyectoServiceImpl implements ProyectoService {
 
     @Override
     public void salva(Proyecto proyecto) {
-        proyectoDao.salva(proyecto);
+        if (proyectoDao.buscaPorId(proyecto.getId())==null){
+            proyectoDao.modificar(proyecto);
 
+        }
     }
 
     @Override
     public void eliminaPorID(long id) {
         proyectoDao.eliminaPorID(id);
 
+    }
+
+    @Override
+    public boolean modificar(Proyecto proyecto) {
+        if (proyectoDao.buscaPorId(proyecto.getId())!=null){
+            proyectoDao.modificar(proyecto);
+            return true;
+
+        }
+        return  false;
     }
 }

@@ -11,5 +11,7 @@ public interface ProyectoService {
     Optional<Proyecto>  buscaPorId(long id);
     void salva(Proyecto proyecto);
     void  eliminaPorID(long id);
+
+    boolean modificar(Proyecto proyecto);
 }
 

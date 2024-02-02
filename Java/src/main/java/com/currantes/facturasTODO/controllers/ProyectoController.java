@@ -22,10 +22,6 @@ import java.util.Optional;
 
    }
 
-   @DeleteMapping("/eliminar/{id}")
-   public void eliminaPorID(@PathVariable Long id) {
-      proyectoService.eliminaPorID(id);
-   }
 
 
    @GetMapping("/buscar/{id}")
@@ -34,12 +30,23 @@ import java.util.Optional;
       return proyectoOptional.orElse(null);
 
    }
-      @PostMapping("/salvar")
+      @PostMapping("/crear")
       public void guardarProyecto(@RequestBody Proyecto proyecto) {
        proyectoService.salva(proyecto);
       }
 
+   @PostMapping("/modificar")
+   public void modificarProyecto(@RequestBody Proyecto proyecto) {
+      proyectoService.modificar(proyecto);
+   }
 
+
+
+
+   @DeleteMapping("/eliminar/{id}")
+   public void eliminaPorID(@PathVariable Long id) {
+      proyectoService.eliminaPorID(id);
+   }
 
 
 
