@@ -1,5 +1,6 @@
 package com.currantes.facturasTODO.entities_model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -20,6 +21,7 @@ public class Proyecto {
     private String descripcion;
 
     @Column(nullable = true, length = 60)
+    @Temporal(TemporalType.DATE) // para que no salga la hora UTC
     private Date fechaFinal;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
