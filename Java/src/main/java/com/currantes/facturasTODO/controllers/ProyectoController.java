@@ -26,12 +26,6 @@ import java.util.Optional;
    }
 
 
-//   @GetMapping("/proyectos/{id}/tareas")
-//   public List<Tarea> obtenerTareassPorProyecto(@PathVariable Long id) {
-//      // Llama al servicio para obtener las tareas asociadas al proyecto con el ID proporcionado
-//      return proyectoService.obtenerTareasPorProyecto(id);
-//   }
-
 
 
 

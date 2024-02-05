@@ -31,10 +31,14 @@ public class ProyectoServiceImpl implements ProyectoService {
 
     @Override
     public void salva(Proyecto proyecto) {
-        if (proyectoDao.buscaPorId(proyecto.getId())==null){
-            proyectoDao.modificar(proyecto);
+        if (proyectoDao.buscaPorId(proyecto.getId()).isEmpty()) {
+            proyectoDao.salva(proyecto);
+            System.out.println("Se ha creado con exito");
+        }  else{
+            System.out.println("Error: El proyecto con el ID " + proyecto.getId() + " ya existe.");
+            }
 
-        }
+
     }
 
     @Override
@@ -45,7 +49,7 @@ public class ProyectoServiceImpl implements ProyectoService {
 
     @Override
     public boolean modificar(Proyecto proyecto) {
-        if (proyectoDao.buscaPorId(proyecto.getId())!=null){
+        if (proyectoDao.buscaPorId(proyecto.getId()).isPresent()){
             proyectoDao.modificar(proyecto);
             return true;
 
