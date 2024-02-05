@@ -2,15 +2,18 @@ package com.currantes.facturasTODO.service.implService;
 
 import com.currantes.facturasTODO.dao_persistence.ProyectoDao;
 import com.currantes.facturasTODO.entities_model.Proyecto;
+import com.currantes.facturasTODO.entities_model.Tarea;
 import com.currantes.facturasTODO.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 //TODA LA LÓGICA AQUI, si se tienen que hacer implementaciones nuevas a los métodos ya existentes se hace aquí
 @Service
+
 public class ProyectoServiceImpl implements ProyectoService {
 
 
@@ -48,5 +51,24 @@ public class ProyectoServiceImpl implements ProyectoService {
 
         }
         return  false;
+    }
+
+
+
+
+    @Override
+    public List<Tarea> TareasPorProyecto(Long id) {
+        // Busca el proyecto por su ID
+        Optional<Proyecto> proyectoOptional = proyectoDao.buscaPorId(id);
+
+        if (proyectoOptional.isPresent()) {
+            // Si se encuentra el proyecto, obtén sus tareas asociadas
+            Proyecto proyecto = proyectoOptional.get();
+            return proyecto.getTareas();
+        } else {
+            // Si no se encuentra el proyecto, devuelve una lista vacía de tareas
+            return Collections.emptyList();
+        }
+
     }
 }

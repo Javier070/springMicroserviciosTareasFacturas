@@ -1,0 +1,15 @@
+com\currantes\facturasTODO\service\implService\TareaServiceImpl.class
+com\currantes\facturasTODO\dao_persistence\implDao\ProyectoDaoImpl.class
+com\currantes\facturasTODO\service\ProyectoService.class
+com\currantes\facturasTODO\controllers\TareaController.class
+com\currantes\facturasTODO\entities_model\Proyecto.class
+com\currantes\facturasTODO\FacturasTodoApplication.class
+com\currantes\facturasTODO\service\implService\ProyectoServiceImpl.class
+com\currantes\facturasTODO\dao_persistence\ProyectoDao.class
+com\currantes\facturasTODO\entities_model\Tarea.class
+com\currantes\facturasTODO\controllers\ProyectoController.class
+com\currantes\facturasTODO\repository\ProyectoRepository.class
+com\currantes\facturasTODO\dao_persistence\implDao\TareaDaoImpl.class
+com\currantes\facturasTODO\dao_persistence\TareaDao.class
+com\currantes\facturasTODO\repository\TareaRepository.class
+com\currantes\facturasTODO\service\TareaService.class

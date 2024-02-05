@@ -19,7 +19,7 @@ public class Proyecto {
     @Column(nullable = false, length = 600)
     private String descripcion;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = true, length = 60)
     private Date fechaFinal;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -62,4 +62,9 @@ public class Proyecto {
     public void setFechaFinal(Date fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
+
+    public List<Tarea> getTareas() {
+        return tareas;
+    }
+
 }

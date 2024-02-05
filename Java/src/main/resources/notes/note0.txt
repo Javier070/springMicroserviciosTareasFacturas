@@ -1,0 +1,5 @@
+
+   @GetMapping("/tareas/{idProyecto}")
+   public List<Tarea> obtenerTareasDeProyecto(@PathVariable Long idProyecto) {
+      return proyectoService.obtenerTareasPorProyecto(idProyecto);
+   }

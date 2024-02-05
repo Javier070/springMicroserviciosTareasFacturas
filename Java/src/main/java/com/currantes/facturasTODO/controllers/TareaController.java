@@ -3,11 +3,11 @@ package com.currantes.facturasTODO.controllers;
 import com.currantes.facturasTODO.entities_model.Tarea;
 import com.currantes.facturasTODO.service.TareaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
 @RestController
@@ -16,8 +16,17 @@ import java.util.List;
 
   @Autowired TareaService tareaService;
 
-  @GetMapping("/tarea/todaTareas") List<Tarea> listaTodoTareas(){
-
+  @GetMapping("/todaTareas") List<Tarea> listaTodoTareas(){
    return tareaService.listaTodoTareas();
+
+//   @DeleteMapping("/eliminar/{id}")
+//          public void eliminaPorIdTareas(@PathVariable Long id){
+//              tareaService.eliminaPorIdTareas(id);
+//
+//      }
+
+
+
+
   }
 }

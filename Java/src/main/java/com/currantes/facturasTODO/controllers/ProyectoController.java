@@ -1,5 +1,6 @@
 package com.currantes.facturasTODO.controllers;
 
+import com.currantes.facturasTODO.entities_model.Tarea;
 import com.currantes.facturasTODO.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +16,43 @@ import java.util.Optional;
    @Autowired
    private ProyectoService proyectoService;
 
+
+
+
+   @GetMapping("/{id}/tareas")
+   public List<Tarea> TareasPorProyecto(@PathVariable Long id) {
+      // Llama al servicio para obtener las tareas asociadas al proyecto con el ID proporcionado
+      return proyectoService.TareasPorProyecto(id);
+   }
+
+
+//   @GetMapping("/proyectos/{id}/tareas")
+//   public List<Tarea> obtenerTareassPorProyecto(@PathVariable Long id) {
+//      // Llama al servicio para obtener las tareas asociadas al proyecto con el ID proporcionado
+//      return proyectoService.obtenerTareasPorProyecto(id);
+//   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    @GetMapping("/listaProyectos")
    public List <Proyecto> listaTodoProyectos(){
       return proyectoService.listaTodoProyectos();
 
    }
-
 
 
    @GetMapping("/buscar/{id}")
@@ -49,13 +81,7 @@ import java.util.Optional;
       proyectoService.eliminaPorID(id);
    }
 
-
-
-
-
-
-
-   }
+}
 
 
 

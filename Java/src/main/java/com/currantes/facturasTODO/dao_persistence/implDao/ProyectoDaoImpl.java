@@ -2,6 +2,7 @@ package com.currantes.facturasTODO.dao_persistence.implDao;
 
 import com.currantes.facturasTODO.dao_persistence.ProyectoDao;
 import com.currantes.facturasTODO.entities_model.Proyecto;
+import com.currantes.facturasTODO.entities_model.Tarea;
 import com.currantes.facturasTODO.repository.ProyectoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,5 +45,10 @@ public class ProyectoDaoImpl implements ProyectoDao {// poder implementar lo mé
     @Override
     public void modificar(Proyecto proyecto) {
         proyectoRepository.save(proyecto);
+    }
+
+    @Override
+    public List<Tarea> obtenerTareasPorProyecto(Long id) {
+        return null;
     }
 }
