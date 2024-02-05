@@ -21,18 +21,18 @@ public class TareaDaoImpl implements TareaDao {
     }
 
     @Override
-    public Optional<Tarea> buscaPorId(long id) {
+    public Optional<Tarea> buscaPorIdTareas(long id) {
         return tareaRepository.findById(id);
     }
 
     @Override
-    public void eliminaPorId(long id) {
+    public void eliminaPorIdTareas(long id) {
         tareaRepository.deleteById(id);
 
     }
 
     @Override
-    public void salva(Tarea tarea) {
+    public void salvaTareas(Tarea tarea) {
         tareaRepository.save(tarea);
 
     }

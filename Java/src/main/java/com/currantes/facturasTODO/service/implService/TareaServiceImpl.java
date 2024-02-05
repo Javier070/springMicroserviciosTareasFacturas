@@ -30,19 +30,19 @@ public class TareaServiceImpl implements TareaService {
     }
 
     @Override
-    public Optional<Tarea> buscaPorId(long id) {
-        return tareaDao.buscaPorId(id);
+    public Optional<Tarea> buscaPorIdTareas(long id) {
+        return tareaDao.buscaPorIdTareas(id);
     }
 
     @Override
-    public void eliminaPorId(long id) {
-        tareaDao.eliminaPorId(id);
+    public void eliminaPorIdTareas(long id) {
+        tareaDao.eliminaPorIdTareas(id);
 
     }
 
     @Override
-    public void salva(Tarea tarea) {
-        tareaDao.salva(tarea);
+    public void salvaTareas(Tarea tarea) {
+        tareaDao.salvaTareas(tarea);
 
     }
 }

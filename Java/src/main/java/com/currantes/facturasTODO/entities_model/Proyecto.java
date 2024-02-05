@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,9 @@ public class Proyecto {
     private String nombre;
     @Column(nullable = false, length = 600)
     private String descripcion;
+
+    @Column(nullable = false, length = 60)
+    private Date fechaFinal;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();
@@ -51,7 +55,11 @@ public class Proyecto {
         this.descripcion = descripcion;
     }
 
+    public Date getFechaFinal() {
+        return fechaFinal;
+    }
 
-
-
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
 }

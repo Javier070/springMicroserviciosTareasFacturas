@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface TareaService {
 
     List<Tarea> listaTodoTareas();
-    Optional<Tarea> buscaPorId(long id);
-    void eliminaPorId(long id);
-    void salva(Tarea tarea);
+    Optional<Tarea> buscaPorIdTareas(long id);
+    void eliminaPorIdTareas(long id);
+    void salvaTareas(Tarea tarea);
 }
