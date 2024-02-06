@@ -1,138 +1,30 @@
 package com.crmv.integrador2.components
 
-import android.widget.Toast
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SearchBar
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.crmv.integrador2.R
-import com.crmv.integrador2.ui.theme.TextColor
-
-@Composable
-fun NormalTextComponent(value: String) {
-    Text(
-        text = value,
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = 80.dp),
-        style = TextStyle(
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Normal,
-            fontStyle = FontStyle.Normal
-        ),
-        color = TextColor,
-        textAlign = TextAlign.Center
-    )
-
-}
-
-@Composable
-fun HeadingTextComponent(value: String) {
-    Text(
-        text = value,
-        modifier = Modifier
-            .padding( start = 22.dp, top = 10.dp),
-
-        style = TextStyle(
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            fontStyle = FontStyle.Normal
-        ),
-        color = TextColor,
-        textAlign = TextAlign.Left
-    )
-
-}
-
-@Composable
-fun ButtonComponent() {
-
-    Column(
-        modifier = Modifier
-            .padding(20.dp)
-            .padding(top = 300.dp)
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-
-        Button(
-            onClick = { "" },
-
-            ) {
-            Text(text = "Gestionas proyectos")
-        }
-        Button(
-            onClick = { "" },
-            modifier = Modifier.padding(top = 30.dp)
-        ) {
-            Text(text = "Gestionas facturas")
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyTextField() {
-
-    /* val textValue = remember { mutableStateOf("Inicial") }
-
-
-     OutlinedTextField(
- label = {Text(text = labelValue)},
- value = textValue,
- colors = TextFieldDefaults.outlinedTextFieldColors(
-     focusedBorderColor = Color.Blue,
-     focusedLabelColor = Color.Blue,
-     cursorColor = Color.Blue,
- ),
- keyboardOptions = KeyboardOptions.Default,
- onValueChange = {it: String textValue.value = it})*/
-}
+import androidx.navigation.NavController
+import com.crmv.integrador2.views.items
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -180,3 +72,48 @@ fun SearchBar() {
     }
 }
 
+
+//BARRA DE NAVEGACIÓN
+@Composable
+fun BottomNavigationBar(navController: NavController) {
+    // Variable de estado para almacenar el índice de la pantalla activa
+    var selectedScreen by remember { mutableStateOf(0) }
+
+    NavigationBar {
+        Row(
+            modifier = Modifier.background(MaterialTheme.colorScheme.inverseOnSurface)
+        ) {
+            items.forEachIndexed { index, item ->
+                NavigationBarItem(
+                    // Verifica si el índice actual coincide con el índice de la pantalla activa
+                    selected = index == selectedScreen,
+                    onClick = {
+                        // Actualiza el índice de la pantalla activa al hacer clic en el ícono
+                        selectedScreen = index
+
+                        // Navega a la pantalla correspondiente después de actualizar el estado
+                        when (index) {
+                            0 -> navController.navigate("PerfilUsuarioView")
+                            1 -> navController.navigate("MisFacturasView")
+                            2 -> navController.navigate("MisProyectosView")
+                            3 -> navController.navigate("ruta_pantalla_4")
+                        }
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = item.icon,
+                            contentDescription = item.title,
+                            tint = MaterialTheme.colorScheme.onBackground
+                        )
+                    },
+                    label = {
+                        Text(
+                            text = item.title,
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
+                    }
+                )
+            }
+        }
+    }
+}
