@@ -3,12 +3,15 @@ package com.currantes.facturasTODO.entities_model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data  //Anotación para generar automáticamente getters, setters y los toString
+
 public class Proyecto {
 
     @Id
@@ -24,6 +27,10 @@ public class Proyecto {
     @Temporal(TemporalType.DATE) // para que no salga la hora UTC
     private Date fechaFinal;
 
+    @Column(nullable = true, length = 60)
+    @Temporal(TemporalType.DATE)
+    private Date fechaesperada;
+
     @Column(length = 600)
     private Boolean estado = false;
 
@@ -37,48 +44,6 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Date getFechaFinal() {
-        return fechaFinal;
-    }
-
-    public void setFechaFinal(Date fechaFinal) {
-        this.fechaFinal = fechaFinal;
-    }
-
-    public List<Tarea> getTareas() {
-        return tareas;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
 
 }

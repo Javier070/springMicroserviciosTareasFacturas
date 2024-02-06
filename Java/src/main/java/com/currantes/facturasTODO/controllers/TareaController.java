@@ -17,10 +17,17 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
   @Autowired TareaService tareaService;
 
-  @GetMapping("/todaTareas") List<Tarea> listaTodoTareas() {
+  @GetMapping("/todaTareas")
+  List<Tarea> listaTodoTareas() {
       return tareaService.listaTodoTareas();
 
   }
+
+  @PostMapping("/crear")
+    public void  crearTarea( @RequestBody Tarea tarea){
+       tareaService.salvaTareas(tarea);
+  }
+  //  @RequestBody se utiliza para mapear el cuerpo de la solicitud HTTP a un objeto en el método del controlador.
 
 
       @DeleteMapping("/eliminar/{id}")
