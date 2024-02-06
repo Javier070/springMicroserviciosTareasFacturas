@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.currantes.facturasTODO.FacturasTodoApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.008 s <<< FAILURE! -- in com.currantes.facturasTODO.FacturasTodoApplicationTests
-com.currantes.facturasTODO.FacturasTodoApplicationTests -- Time elapsed: 0.008 s <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! -- in com.currantes.facturasTODO.FacturasTodoApplicationTests
+com.currantes.facturasTODO.FacturasTodoApplicationTests -- Time elapsed: 0.009 s <<< ERROR!
 java.lang.TypeNotPresentException: Type org.springframework.test.context.junit.jupiter.SpringExtension not present
 	at jdk.proxy2/jdk.proxy2.$Proxy9.value(Unknown Source)
 	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
