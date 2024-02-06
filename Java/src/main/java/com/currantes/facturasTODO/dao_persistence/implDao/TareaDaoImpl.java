@@ -21,8 +21,8 @@ public class TareaDaoImpl implements TareaDao {
     }
 
     @Override
-    public Optional<Tarea> buscaPorIdTareas(long id) {
-        return tareaRepository.findById(id);
+    public Tarea buscaPorIdTareas(long id) {
+        return tareaRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -36,5 +36,7 @@ public class TareaDaoImpl implements TareaDao {
         tareaRepository.save(tarea);
 
     }
+
+
 }
 

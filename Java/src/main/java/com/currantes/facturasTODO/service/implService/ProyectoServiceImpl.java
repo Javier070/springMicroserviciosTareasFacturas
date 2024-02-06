@@ -25,21 +25,21 @@ public class ProyectoServiceImpl implements ProyectoService {
     }
 
     @Override
-    public Optional<Proyecto> buscaPorId(long id) {
+    public Proyecto buscaPorId(long id) {
         return proyectoDao.buscaPorId(id);
     }
 
+
     @Override
     public void salva(Proyecto proyecto) {
-        if (proyectoDao.buscaPorId(proyecto.getId()).isEmpty()) {
+        if (proyectoDao.buscaPorId(proyecto.getId()) == null) {
             proyectoDao.salva(proyecto);
-            System.out.println("Se ha creado con exito");
-        }  else{
+            System.out.println("Se ha creado con éxito");
+        } else {
             System.out.println("Error: El proyecto con el ID " + proyecto.getId() + " ya existe.");
-            }
-
-
+        }
     }
+
 
     @Override
     public void eliminaPorID(long id) {
@@ -49,7 +49,7 @@ public class ProyectoServiceImpl implements ProyectoService {
 
     @Override
     public boolean modificar(Proyecto proyecto) {
-        if (proyectoDao.buscaPorId(proyecto.getId()).isPresent()){
+        if (proyectoDao.buscaPorId(proyecto.getId())!= null){
             proyectoDao.modificar(proyecto);
             return true;
 
@@ -62,17 +62,31 @@ public class ProyectoServiceImpl implements ProyectoService {
 
     @Override
     public List<Tarea> TareasPorProyecto(Long id) {
-        // Busca el proyecto por su ID
-        Optional<Proyecto> proyectoOptional = proyectoDao.buscaPorId(id);
-
-        if (proyectoOptional.isPresent()) {
+        // Verifica si el Optional contiene un proyecto
+        if (proyectoDao.buscaPorId(id) != null) {
             // Si se encuentra el proyecto, obtén sus tareas asociadas
-            Proyecto proyecto = proyectoOptional.get();
-            return proyecto.getTareas();
+            return proyectoDao.buscaPorId(id).getTareas();
         } else {
             // Si no se encuentra el proyecto, devuelve una lista vacía de tareas
             return Collections.emptyList();
         }
+        //buscaPorId(id) de tu DAO (ProyectoDao) devuelve un objeto Optional<Proyecto>
+        //Para obtener el objeto Proyecto contenido dentro de Optional, necesitas llamar al método get().
 
     }
+
+    @Override
+    public boolean proyectoFinalizado(Long idProyecto) {
+        // Aquí implementa la lógica para verificar si el proyecto está finalizado
+        // utilizando el DAO para obtener los datos necesarios de la base de datos.
+        return false; // Ejemplo: se devuelve false por defecto
+    }
+
+    @Override
+    public void actualizarEstadoProyecto(Long idProyecto, boolean estado) {
+        // Aquí implementa la lógica para actualizar el estado del proyecto
+        // utilizando el DAO para modificar los datos en la base de datos.
+        }
+
+
 }

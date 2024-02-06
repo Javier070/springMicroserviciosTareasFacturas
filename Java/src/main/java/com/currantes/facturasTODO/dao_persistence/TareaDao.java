@@ -10,7 +10,9 @@ import java.util.Optional;
 public interface   TareaDao {
 
     List<Tarea> listaTodoTareas();
-    Optional<Tarea> buscaPorIdTareas(long id);
+    Tarea buscaPorIdTareas(long id);
     void eliminaPorIdTareas(long id);
     void salvaTareas(Tarea tarea);
+
+
 }

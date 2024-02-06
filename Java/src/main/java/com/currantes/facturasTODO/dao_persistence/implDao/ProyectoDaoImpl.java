@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 @Repository
 public class ProyectoDaoImpl implements ProyectoDao {// poder implementar lo métodos creados por nosotros
     //que seran sobreescritos usando la lógica de JPA
@@ -24,10 +22,13 @@ public class ProyectoDaoImpl implements ProyectoDao {// poder implementar lo mé
         return proyectoRepository.findAll();
     }
 
+
+
     @Override
-    public Optional<Proyecto> buscaPorId(long id) {
-        return proyectoRepository.findById(id);
+    public Proyecto buscaPorId(long id) {
+        return proyectoRepository.findById(id).orElse(null);
     }
+
 
     @Override
     public void salva(Proyecto proyecto) {

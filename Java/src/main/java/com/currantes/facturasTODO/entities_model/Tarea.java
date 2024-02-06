@@ -13,7 +13,7 @@ public class Tarea {
 
     @Column(nullable = false, length = 300)
     private String nombre;
-    @Column(nullable = false, length = 600)
+    @Column(nullable = true, length = 600)
     private String descripcion;
     @Column(nullable = true, length = 60)
     @Temporal(TemporalType.DATE) // para que no salga la hora UTC

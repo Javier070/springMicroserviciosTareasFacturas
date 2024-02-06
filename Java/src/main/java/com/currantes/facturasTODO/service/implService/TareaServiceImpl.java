@@ -30,7 +30,7 @@ public class TareaServiceImpl implements TareaService {
     }
 
     @Override
-    public Optional<Tarea> buscaPorIdTareas(long id) {
+    public Tarea buscaPorIdTareas(long id) {
         return tareaDao.buscaPorIdTareas(id);
     }
 

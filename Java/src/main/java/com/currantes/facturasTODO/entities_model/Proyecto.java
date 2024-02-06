@@ -17,12 +17,16 @@ public class Proyecto {
 
     @Column(nullable = false, length = 300)
     private String nombre;
-    @Column(nullable = false, length = 600)
+    @Column(nullable = true, length = 600)
     private String descripcion;
 
     @Column(nullable = true, length = 60)
     @Temporal(TemporalType.DATE) // para que no salga la hora UTC
     private Date fechaFinal;
+
+    @Column(length = 600)
+    private Boolean estado = false;
+
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();
@@ -67,6 +71,14 @@ public class Proyecto {
 
     public List<Tarea> getTareas() {
         return tareas;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
 }

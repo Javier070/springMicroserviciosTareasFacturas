@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.currantes.facturasTODO.entities_model.Proyecto; // Asegúrate de importar la clase Proyecto aquí
 
 import java.util.List;
-import java.util.Optional;
+
 //hola
 @RestController
 @RequestMapping("/proyecto")
@@ -51,8 +51,7 @@ import java.util.Optional;
 
    @GetMapping("/buscar/{id}")
    public Proyecto buscarPorId(@PathVariable Long id) {
-      Optional<Proyecto> proyectoOptional = proyectoService.buscaPorId(id);
-      return proyectoOptional.orElse(null);
+      return  proyectoService.buscaPorId(id);
 
    }
       @PostMapping("/crear")
