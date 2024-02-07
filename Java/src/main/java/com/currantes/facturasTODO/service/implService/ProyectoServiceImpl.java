@@ -48,13 +48,13 @@ public class ProyectoServiceImpl implements ProyectoService {
     }
 
     @Override
-    public boolean modificar(Proyecto proyecto) {
+    public void modificar(Proyecto proyecto) {
         if (proyectoDao.buscaPorId(proyecto.getId())!= null){
             proyectoDao.modificar(proyecto);
-            return true;
+
 
         }
-        return  false;
+
     }
 
 
@@ -74,6 +74,11 @@ public class ProyectoServiceImpl implements ProyectoService {
         //Para obtener el objeto Proyecto contenido dentro de Optional, necesitas llamar al método get().
 
     }
+
+
+
+
+
 
     @Override
     public boolean proyectoFinalizado(Long idProyecto) {

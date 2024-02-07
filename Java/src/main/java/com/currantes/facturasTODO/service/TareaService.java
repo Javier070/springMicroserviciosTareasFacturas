@@ -11,4 +11,8 @@ public interface TareaService {
     Tarea buscaPorIdTareas(long id);
     void eliminaPorIdTareas(long id);
     void salvaTareas(Tarea tarea);
+
+    void modificarTareas(Tarea tarea);
+
+
 }

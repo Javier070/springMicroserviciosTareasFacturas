@@ -35,5 +35,13 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
           tareaService.eliminaPorIdTareas(id);
       }
 
+    @PostMapping("/modificar")
+    public  void modificarTarea (@RequestBody Tarea tarea){
+      tareaService.modificarTareas(tarea);
+
+    }
   }
+
+
+
 

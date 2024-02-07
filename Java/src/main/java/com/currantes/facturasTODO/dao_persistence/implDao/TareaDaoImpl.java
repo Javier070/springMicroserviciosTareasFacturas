@@ -37,6 +37,12 @@ public class TareaDaoImpl implements TareaDao {
 
     }
 
+    @Override
+    public void modificarTareasDao(Tarea tarea) {
+        tareaRepository.save(tarea);
+
+    }
+
 
 }
 

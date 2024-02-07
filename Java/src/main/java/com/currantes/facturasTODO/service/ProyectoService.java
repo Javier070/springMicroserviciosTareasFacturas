@@ -14,7 +14,7 @@ public interface ProyectoService  {
     void salva(Proyecto proyecto);
     void  eliminaPorID(long id);
 
-    boolean modificar(Proyecto proyecto);
+    void modificar(Proyecto proyecto);
 
     List<Tarea> TareasPorProyecto(Long id);
 

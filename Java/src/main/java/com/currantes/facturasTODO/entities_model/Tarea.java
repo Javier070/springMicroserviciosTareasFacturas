@@ -25,7 +25,7 @@ public class Tarea {
     private boolean estado;
 
     @ManyToOne
-    @JoinColumn(name = "id_Proyecto", nullable = false)    //Especificación de la Columna de Clave Foránea:
+    @JoinColumn(name = "id_proyecto", nullable = false)    //Especificación de la Columna de Clave Foránea:
 
     private Proyecto proyecto;
 
