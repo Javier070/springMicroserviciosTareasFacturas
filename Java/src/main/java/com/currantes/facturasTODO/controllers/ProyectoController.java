@@ -4,78 +4,44 @@ import com.currantes.facturasTODO.entities_model.Tarea;
 import com.currantes.facturasTODO.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.currantes.facturasTODO.entities_model.Proyecto; // Asegúrate de importar la clase Proyecto aquí
+import com.currantes.facturasTODO.entities_model.Proyecto;
 
 import java.util.List;
 
-//hola
 @RestController
 @RequestMapping("/proyecto")
-   public class ProyectoController { // soy clase
+public class ProyectoController {
 
    @Autowired
    private ProyectoService proyectoService;
 
-
-
-
-   @GetMapping("/{id}/tareas")
+   @GetMapping(value = "/{id}/tareas", produces = "application/json")
    public List<Tarea> TareasPorProyecto(@PathVariable Long id) {
-      // Llama al servicio para obtener las tareas asociadas al proyecto con el ID proporcionado
       return proyectoService.TareasPorProyecto(id);
    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   @GetMapping("/listaProyectos")
-   public List <Proyecto> listaTodoProyectos(){
+   @GetMapping(value = "/listaProyectos", produces = "application/json")
+   public List<Proyecto> listaTodoProyectos() {
       return proyectoService.listaTodoProyectos();
-
    }
 
-
-   @GetMapping("/buscar/{id}")
+   @GetMapping(value = "/buscar/{id}", produces = "application/json")
    public Proyecto buscarPorId(@PathVariable Long id) {
-      return  proyectoService.buscaPorId(id);
-
+      return proyectoService.buscaPorId(id);
    }
-      @PostMapping("/crear")
-      public void guardarProyecto(@RequestBody Proyecto proyecto) {
-       proyectoService.salva(proyecto);
-      }
-      // implica asociar el cuerpo de la solicitud HTTP con un objeto Java específico,
-   // es decir, vincular los datos enviados en la solicitud con un objeto Java en la aplicación.
 
-   @PostMapping("/modificar")
+   @PostMapping(value = "/crear", consumes = "application/json")
+   public void guardarProyecto(@RequestBody Proyecto proyecto) {
+      proyectoService.salva(proyecto);
+   }
+
+   @PostMapping(value = "/modificar", consumes = "application/json")
    public void modificarProyecto(@RequestBody Proyecto proyecto) {
       proyectoService.modificar(proyecto);
    }
 
-
-
-
-   @DeleteMapping("/eliminar/{id}")
+   @DeleteMapping(value = "/eliminar/{id}")
    public void eliminaPorID(@PathVariable Long id) {
       proyectoService.eliminaPorID(id);
    }
-
 }
-
-
-
-

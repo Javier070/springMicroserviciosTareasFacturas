@@ -2,6 +2,7 @@ package com.currantes.facturasTODO.entities_model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -34,13 +35,13 @@ public class Proyecto {
     @Column(length = 600)
     private Boolean estado = false;
 
-
-    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();
 
     //cascade = CascadeType.ALL: hace que las operaciones realizadas en proyecto se propaguen a sus tareas correspondientes
     //orphanRemoval = true: Elimina automáticamente las Tareas que ya no están asociadas a ningún Proyecto cuando se eliminan el proyecyo.
-
+    //FetchType.LAZY
     public Proyecto() {
     }
 

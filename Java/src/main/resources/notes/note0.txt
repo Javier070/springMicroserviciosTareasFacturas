@@ -3,3 +3,14 @@
    public List<Tarea> obtenerTareasDeProyecto(@PathVariable Long idProyecto) {
       return proyectoService.obtenerTareasPorProyecto(idProyecto);
    }
+
+
+El problema específico ocurre cuando Jackson intenta serializar una
+ entidad Proyecto que tiene una lista de Tarea, y cada Tarea hace referencia de nuevo al Proyecto.
+  Esto crea un bucle infinito de serialización que eventualmente provoca un
+   desbordamiento de pila (StackOverflowError).
+
+   La referencia circular ocurre porque tienes una relación bidireccional entre Proyecto y Tarea,
+    donde Proyecto tiene una lista de Tarea y cada Tarea tiene una referencia al Proyecto al que pertenece.
+     Cuando Jackson intenta serializar estas entidades a JSON, sigue la referencia y entra en un bucle infinito,
+      lo que provoca el desbordamiento de la pila.
