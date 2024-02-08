@@ -6,12 +6,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
 
-    fun build(): Retrofit =
+    val webService: WebService by lazy {
         Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/pokemon")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
+            .create(WebService::class.java)
 
-
+    }
 
 }

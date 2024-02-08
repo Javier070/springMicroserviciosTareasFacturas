@@ -140,7 +140,7 @@ fun WalletSection() {
 
         Column {
             Text(
-                text = "Wallet",
+                text = "Monedero",
                 fontSize = 17.sp,
                 color = MaterialTheme.colorScheme.onBackground
             )

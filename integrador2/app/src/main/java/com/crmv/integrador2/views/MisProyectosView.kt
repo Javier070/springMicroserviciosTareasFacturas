@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.width
 
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -32,6 +33,8 @@ import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material.icons.rounded.KeyboardArrowUp
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -50,10 +53,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.crmv.integrador2.components.BottomNavigationBar
 import com.crmv.integrador2.components.SearchBar
 import com.crmv.integrador2.navigation.AppScreens
+import com.crmv.integrador2.ui.theme.GreenStart
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+/*@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MisProyectosView(navController: NavController) {
@@ -153,9 +158,105 @@ fun MisProyectosView(navController: NavController) {
      }
      }  )
 
+}*/
+
+
+@Composable
+fun MisProyectosView(navController: NavController) {
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(onClick = { /*TODO*/ }, containerColor =  GreenStart) {
+                Icon(imageVector = Icons.Filled.Add, contentDescription = "Crear")
+            }
+        },
+        floatingActionButtonPosition = FabPosition.End,
+
+        bottomBar = {
+            BottomNavigationBar(navController)
+        }
+
+    ) { padding ->
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+
+            ListaProyectos()
+        }
+
+
+    }
 }
 
 
+@Preview
+@Composable
+fun ListaProyectos() {
+    Column {
+        Text(
+            text = "Proyectos",
+            fontSize = 24.sp,
+            color = MaterialTheme.colorScheme.onBackground,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(16.dp)
+        )
+
+        LazyColumn (
+            verticalArrangement = Arrangement.spacedBy(32.dp)
+        ) {
+            items(financeList.size) {
+                FinanceItem2(it)
+            }
+        }
+    }
+}
+
+@Composable
+fun FinanceItem2(
+    index: Int
+) {
+    val finance = financeList[index]
+    var lastPaddingEnd = 0.dp
+    if (index == financeList.size - 1) {
+        lastPaddingEnd = 16.dp
+    }
+
+    Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
+        Column(
+            modifier = Modifier
+                .clip(RoundedCornerShape(25.dp))
+                .background(MaterialTheme.colorScheme.secondaryContainer)
+                .fillMaxWidth()
+                .clickable {}
+                .padding(13.dp),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(finance.background)
+                    .padding(6.dp)
+            ) {
+                Icon(
+                    imageVector = finance.icon,
+                    contentDescription = finance.name,
+                    tint = Color.White
+                )
+            }
+
+            Text(
+                text = finance.name,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 15.sp
+            )
+
+        }
+    }
+}
 
 
 
