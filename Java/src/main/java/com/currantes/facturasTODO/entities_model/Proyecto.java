@@ -25,11 +25,11 @@ public class Proyecto {
 
     @Column(nullable = true, length = 60)
     @Temporal(TemporalType.DATE) // para que no salga la hora UTC
-    private Date fechaFinal;
+    private Date fecha_final;
 
     @Column(nullable = true, length = 60)
     @Temporal(TemporalType.DATE)
-    private Date fechaesperada;
+    private Date fecha_esperada;
 
     @Column(length = 600)
     private Boolean estado = false;

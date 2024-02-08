@@ -17,9 +17,15 @@ public class Tarea {
     private String nombre;
     @Column(nullable = true, length = 600)
     private String descripcion;
+
     @Column(nullable = true, length = 60)
     @Temporal(TemporalType.DATE) // para que no salga la hora UTC
-    private Date fechaFinal;
+    private Date fecha_final;
+
+    @Column(nullable = true, length = 60)
+    @Temporal(TemporalType.DATE)
+    private Date fecha_esperada;
+
 
     @Column(nullable = false, length = 60)
     private boolean estado;
