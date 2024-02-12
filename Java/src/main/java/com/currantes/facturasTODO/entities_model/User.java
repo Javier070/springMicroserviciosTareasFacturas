@@ -30,13 +30,29 @@ public class User implements UserDetails {
     private  String address;
 
 
-
+////////////////// relación con la tabla roles
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="role_has_user",
             joinColumns = {@JoinColumn(name="user_iduser")},
             inverseJoinColumns = {@JoinColumn(name="role_idrole")}
     )
     private Set<Role> roles;
+    ///////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public User() {
         super();
@@ -50,6 +66,15 @@ public class User implements UserDetails {
         this.password = password;
         this.roles = roles;
     }
+
+
+
+
+
+
+
+
+
 
     public Set<Role> getRoles() {
         return roles;
