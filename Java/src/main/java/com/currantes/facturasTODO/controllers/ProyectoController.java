@@ -15,27 +15,27 @@ public class ProyectoController {
    @Autowired
    private ProyectoService proyectoService;
 
-   @GetMapping(value = "/{id}/tareas", produces = "application/json")
+   @GetMapping(value = "/{id}/tareas")
    public List<Tarea> TareasPorProyecto(@PathVariable Long id) {
       return proyectoService.TareasPorProyecto(id);
    }
 
-   @GetMapping(value = "/listaProyectos", produces = "application/json")
+   @GetMapping(value = "/listaProyectos")
    public List<Proyecto> listaTodoProyectos() {
       return proyectoService.listaTodoProyectos();
    }
 
-   @GetMapping(value = "/buscar/{id}", produces = "application/json")
+   @GetMapping(value = "/buscar/{id}")
    public Proyecto buscarPorId(@PathVariable Long id) {
       return proyectoService.buscaPorId(id);
    }
 
-   @PostMapping(value = "/crear", consumes = "application/json")
+   @PostMapping(value = "/crear")
    public void guardarProyecto(@RequestBody Proyecto proyecto) {
       proyectoService.salva(proyecto);
    }
 
-   @PostMapping(value = "/modificar", consumes = "application/json")
+   @PostMapping(value = "/modificar")
    public void modificarProyecto(@RequestBody Proyecto proyecto) {
       proyectoService.modificar(proyecto);
    }

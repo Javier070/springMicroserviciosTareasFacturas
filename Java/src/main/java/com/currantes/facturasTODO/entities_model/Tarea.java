@@ -2,6 +2,7 @@ package com.currantes.facturasTODO.entities_model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -30,7 +31,7 @@ public class Tarea {
 
     @Column(nullable = false, length = 60)
     private boolean estado;
-
+    //@JsonManagedReference //pocho
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_proyecto", nullable = false)    //Especificación de la Columna de Clave Foránea:

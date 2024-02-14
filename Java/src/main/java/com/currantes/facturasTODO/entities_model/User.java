@@ -31,12 +31,11 @@ public class User implements UserDetails {
 
 
 ////////////////// relación con la tabla roles
+    @Column(nullable = true)
     @ManyToMany(fetch=FetchType.EAGER)
-    @JoinTable(name="role_has_user",
-            joinColumns = {@JoinColumn(name="user_iduser")},
-            inverseJoinColumns = {@JoinColumn(name="role_idrole")}
-    )
+    @JoinTable(name="role_has_user", joinColumns = {@JoinColumn(name="user_iduser")}, inverseJoinColumns = {@JoinColumn(name="role_idrole")})
     private Set<Role> roles;
+
     ///////////////////////////////////////////////////
 
 

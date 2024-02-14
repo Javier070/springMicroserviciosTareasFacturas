@@ -1,6 +1,7 @@
 package com.currantes.facturasTODO.entities_model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -33,12 +34,15 @@ public class Proyecto {
 
     @Column(length = 600)
     private Boolean estado = false;
+   // @JsonBackReference //pocho
 
     @JsonManagedReference
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();
 
 
+
+    
     @ManyToOne
     @JoinColumn( name ="id_user",nullable = false)
     private User user;
