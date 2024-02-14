@@ -14,3 +14,17 @@ El problema específico ocurre cuando Jackson intenta serializar una
     donde Proyecto tiene una lista de Tarea y cada Tarea tiene una referencia al Proyecto al que pertenece.
      Cuando Jackson intenta serializar estas entidades a JSON, sigue la referencia y entra en un bucle infinito,
       lo que provoca el desbordamiento de la pila.
+
+      =============================================================
+      14/02/2024, hay que si o si crear un user para que te liste su proyecto, con
+      las tareas ocurre lo mismo hay un jerarquia de
+      user> proyecto> tarea, si no hay user no se puede llamar el proyecto por ejemplo
+
+      =======================================================
+      Porque uso @JsonManagedReference y @JsonBackReference:
+        Cuando tienes una relación bidireccional entre dos entidades
+        (por ejemplo, una relación uno a muchos o muchos a uno),
+         puede producirse un bucle infinito durante la serialización
+         si ambas entidades intentan incluir la referencia a la otra.
+         Para evitar este bucle, estas anotaciones para indicar cuál
+          es la entidad "principal" y cuál es la entidad secundaria en la relación.

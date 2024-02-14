@@ -1,0 +1,47 @@
+
+En una relación de uno a muchos entre las clases Proyecto y Tarea,
+esto significa que un proyecto puede tener múltiples tareas asociadas,
+pero cada tarea solo pertenece a un único proyecto.
+Esto se representa en el modelo de datos mediante una relación en la que la clase Proyecto tiene una
+colección de tareas.
+
+
+En la clase Tarea, se necesita una referencia al proyecto al que pertenece esa tarea.
+Esto se logra mediante una propiedad en la clase Tarea que hace referencia
+al objeto Proyecto al que está asociada esa tarea. Esta referencia se establece generalmente mediante
+una relación de clave foránea en la base de datos.
+
+
+@Entity
+public class Proyecto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
+    private List<Tarea> tareas = new ArrayList<>();
+
+    // Otros atributos y métodos...
+}
+
+@Entity
+public class Tarea {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "proyecto_id")
+    private Proyecto proyecto;
+
+    // Otros atributos y métodos...
+}
+
+En este ejemplo, la clase Tarea tiene una referencia al objeto Proyecto al que pertenece utilizando
+la anotación @ManyToOne. La anotación @JoinColumn se usa para especificar
+la columna en la tabla Tarea que contiene la clave foránea que enlaza con la tabla Proyecto.
+
+Por otro lado, en la clase Proyecto, la relación se mapea mediante la anotación @OneToMany con mappedBy = "proyecto",
+lo que indica que la propiedad tareas en la clase Proyecto es
+la inversa de la relación definida en la clase Tarea mediante la propiedad proyecto.
+===============================================================================================================

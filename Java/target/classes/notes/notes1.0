@@ -1,0 +1,31 @@
+Un User puede tener múltiples Proyectos,
+ por lo tanto, utilizamos la anotación @OneToMany en la lista proyectos de la clase User.
+
+
+
+Cada Proyecto pertenece a un único User,
+ por lo que utilizamos la anotación @ManyToOne en el campo user de la clase Proyecto.
+
+Cada Proyecto puede tener múltiples Tareas,
+por lo tanto, utilizamos la anotación @OneToMany en la lista tareas de la clase Proyecto.
+
+
+
+Cada Tarea pertenece a un único Proyecto,
+ por lo que utilizamos la anotación @ManyToOne en el campo proyecto de la clase Tarea.
+
+ ==================================================================================================================
+
+ En este caso, la relación entre Persona y Licencia es unidireccional. Cada Licencia pertenece a una única Persona,
+  pero no hay una referencia directa de Persona a Licencia. Solo Licencia tiene una referencia a Persona.
+  Esto significa que puedes acceder a la Persona asociada a una Licencia,
+  pero no puedes acceder directamente desde una Persona a su Licencia.
+
+
+
+  ===========================================================
+Al utilizar mappedBy, estás indicando a JPA que la relación es bidireccional y que
+la entidad propietaria de la relación (la entidad que tiene la clave externa en la base de datos)
+es la entidad que contiene el atributo con el nombre especificado en mappedBy.
+Esto significa que la entidad propietaria no es responsable de la relación y
+no se creará una columna adicional en la tabla de la entidad propietaria para mapear la relación.

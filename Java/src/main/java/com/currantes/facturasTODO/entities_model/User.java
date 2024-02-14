@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -38,7 +39,12 @@ public class User implements UserDetails {
 
     ///////////////////////////////////////////////////
 
+/////////////////////////////// relación con tabla Proyectos
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Proyecto> proyectos;
+
+    /////////////////
 
 
 

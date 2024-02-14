@@ -1,0 +1,5 @@
+hacer que la entidad user haga un mappedBy de User a role para que no tengamos una tabla intermedia, aunque
+puede que no sea la mejor opción ya que es de muchos a muchos
+
+//teorias: en este caso necesitariamos una foregin key de ambas tablas en cada una de ellas o como ha hecho santino
+una tabla intermedia que las contenga haciendo de puente

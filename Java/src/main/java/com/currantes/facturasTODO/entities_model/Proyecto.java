@@ -36,13 +36,34 @@ public class Proyecto {
     private Boolean estado = false;
    // @JsonBackReference //pocho
 
+    // RELACION TAREA
     @JsonManagedReference
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();
 
+    {
+        //IMPORTANTE: si yo comento el: mappedBy = "proyecto", Hibernate crear una tabla intermedia
+        //llamada proyecto_tareas, que contiene el proecto_id y tarea_id
+
+        /**
+         * Cuando comentas la línea mappedBy = "proyecto" en la relación @OneToMany de la clase Proyecto,
+         * Hibernate asume que debe crear una tabla intermedia para manejar la relación entre Proyecto y Tarea.
+         * Esta tabla intermedia es necesaria cuando
+         * la relación entre las dos entidades no se puede representar directamente en una de las tablas.
+         * Al comentar la línea mappedBy = "proyecto",
+         * estás indicando que no hay una propiedad en la clase Tarea que mapee directamente la relación con Proyecto.
+         * Como resultado, Hibernate crea una tabla intermedia llamada proyecto_tareas para
+         * mantener la relación entre las entidades.
+         *
+         * ESTO SOLO ES NECESARIO EN LAS RELACIONES DE MUCHOS A MUCHOS
+         */
+
+    } //Explicacion mappedBy
 
 
-    
+
+
+    //RELACION USER
     @ManyToOne
     @JoinColumn( name ="id_user",nullable = false)
     private User user;

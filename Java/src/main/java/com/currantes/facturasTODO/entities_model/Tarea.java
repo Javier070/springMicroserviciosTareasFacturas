@@ -32,10 +32,10 @@ public class Tarea {
     @Column(nullable = false, length = 60)
     private boolean estado;
     //@JsonManagedReference //pocho
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_proyecto", nullable = false)    //Especificación de la Columna de Clave Foránea:
-
     private Proyecto proyecto;
 
     public Tarea() {
