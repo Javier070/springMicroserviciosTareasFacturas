@@ -58,7 +58,7 @@ public class RegistrationDto {
     }
 
     public String getAddress() {
-        return address;
+        return this.address = address;
     }
 
     public void setAddress(String address) {
