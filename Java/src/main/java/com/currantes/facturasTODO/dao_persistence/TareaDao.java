@@ -14,7 +14,7 @@ public interface   TareaDao {
     void eliminaPorIdTareas(long id);
     void salvaTareas(Tarea tarea);
 
-    void modificarTareasDao(Tarea tarea);
+
 
 
 }

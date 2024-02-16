@@ -2,6 +2,7 @@ package com.currantes.facturasTODO.entities_model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -37,7 +38,9 @@ public class Proyecto {
    // @JsonBackReference //pocho
 
     // RELACION TAREA
-    @JsonManagedReference
+   // @JsonManagedReference
+    @JsonIgnoreProperties("proyecto")
+
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();
 

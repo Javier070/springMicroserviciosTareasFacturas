@@ -17,6 +17,7 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
   @Autowired TareaService tareaService;
 
+
   @GetMapping("/todaTareas")
   List<Tarea> listaTodoTareas() {
       return tareaService.listaTodoTareas();
@@ -40,6 +41,13 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
       tareaService.modificarTareas(tarea);
 
     }
+
+
+    @GetMapping("/buscar/{id}")
+    public Tarea buscaPorIdTareas(@PathVariable Long id) {
+        return tareaService.buscaPorIdTareas(id);
+    }
+
   }
 
 

@@ -1,5 +1,7 @@
 package com.currantes.facturasTODO.entities_model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,6 +25,12 @@ public class User implements UserDetails {
     private String username;
 
     @Column (nullable = false)
+    private String lastname;
+
+    @Column (nullable = false)
+    private String dni;
+
+    @Column (nullable = false)
     private  String password;
 
     @Column (nullable = true)
@@ -33,7 +41,7 @@ public class User implements UserDetails {
 
 
 ////////////////// relación con la tabla roles
-    @Column(nullable = true)
+    @JsonIgnoreProperties("users")
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="role_has_user", joinColumns = {@JoinColumn(name="user_iduser")}, inverseJoinColumns = {@JoinColumn(name="role_idrole")})
     private Set<Role> roles;
@@ -41,7 +49,7 @@ public class User implements UserDetails {
     ///////////////////////////////////////////////////
 
 /////////////////////////////// relación con tabla Proyectos
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Proyecto> proyectos;
 
@@ -74,13 +82,26 @@ public class User implements UserDetails {
     }
 
 
+    public User(Long idUser, String username, String password, String phone, String address, Set<Role> roles) {
+        this.idUser = idUser;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+        this.roles = roles;
 
+    }
 
-
-
-
-
-
+    public User(Long idUser, String username, String lastname, String dni, String password, String phone, String address, Set<Role> roles) {
+        this.idUser = idUser;
+        this.username = username;
+        this.lastname = lastname;
+        this.dni = dni;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+        this.roles = roles;
+    }
 
     public Set<Role> getRoles() {
         return roles;

@@ -1,6 +1,7 @@
 package com.currantes.facturasTODO.service.seguridad;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.currantes.facturasTODO.dao_persistence.RoleJpaSpring;
@@ -36,12 +37,13 @@ public class AuthenticationService {
     @Autowired
     private TokenService tokenService;
 
-    public User registrarUsuario(String username, String password) {
+
+    public User registrarUsuario(String username, String lastname, String dni, String password, String phone, String address) {
         String encodedPassword = passwordEncoder.encode(password);
         Role userRole = roleService.findByAuthority("USER").get();
         Set<Role> authorities = new HashSet<>();
         authorities.add(userRole);
-        User u1 = new User(0L, username, encodedPassword, authorities);//Si no funciona cambiar de long a int 
+        User u1 = new User(0L, username, lastname, dni, encodedPassword,phone, address, authorities);//Si no funciona cambiar de long a int
         return userService.save(u1);
     }
 
@@ -63,4 +65,7 @@ public class AuthenticationService {
 
     }
 
+    public List<User> listarUsuarios() {
+        return userService.findAll();
+    }
 }
