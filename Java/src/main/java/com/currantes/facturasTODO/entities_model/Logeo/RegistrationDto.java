@@ -50,7 +50,7 @@ public class RegistrationDto {
     }
 
     public String getPhone() {
-        return phone;
+        return this.phone;
     }
 
     public void setPhone(String phone) {
