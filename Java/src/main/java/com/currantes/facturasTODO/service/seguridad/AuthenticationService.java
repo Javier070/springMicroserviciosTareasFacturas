@@ -38,7 +38,7 @@ public class AuthenticationService {
     private TokenService tokenService;
 
 
-    public User registrarUsuario(String username, String firstName, String lastName, String dni, String email, String password, String phone, String address) {
+    public User registrarUsuario(String username, String firstName, String lastName, String dni, String password, String email,  String phone, String address) {
         String encodedPassword = passwordEncoder.encode(password);
         Role userRole = roleService.findByAuthority("USER").get();
         Set<Role> authorities = new HashSet<>();

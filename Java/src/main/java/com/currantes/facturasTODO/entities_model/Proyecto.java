@@ -39,7 +39,7 @@ public class Proyecto {
 
     // RELACION TAREA
    // @JsonManagedReference
-    @JsonIgnoreProperties("proyecto")
+    @JsonIgnoreProperties("proyecto") //ignora el procesamiento de propiedades en este caso proyecto
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();
