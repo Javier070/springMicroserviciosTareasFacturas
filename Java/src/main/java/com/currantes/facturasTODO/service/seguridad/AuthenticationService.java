@@ -38,12 +38,12 @@ public class AuthenticationService {
     private TokenService tokenService;
 
 
-    public User registrarUsuario(String username, String lastname, String dni, String password, String phone, String address) {
+    public User registrarUsuario(String username, String firstName, String lastName, String dni, String email, String password, String phone, String address) {
         String encodedPassword = passwordEncoder.encode(password);
         Role userRole = roleService.findByAuthority("USER").get();
         Set<Role> authorities = new HashSet<>();
         authorities.add(userRole);
-        User u1 = new User(0L, username, lastname, dni, encodedPassword,phone, address, authorities);//Si no funciona cambiar de long a int
+        User u1 = new User(0L, username, firstName, lastName, dni, encodedPassword, email, phone, address, authorities);//Si no funciona cambiar de long a int
         return userService.save(u1);
     }
 

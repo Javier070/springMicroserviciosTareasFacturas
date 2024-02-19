@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping(value = "/register", consumes= MediaType.APPLICATION_JSON_VALUE)
     public User registrarUsuario(@RequestBody RegistrationDto body) {
-        return auService.registrarUsuario(body.getUsername(), body.getLastname(), body.getDni(), body.getPassword(), body.getPhone(), body.getAddress());
+        return auService.registrarUsuario(body.getUsername(), body.getFirstName(), body.getLastName(), body.getDni(), body.getPassword(), body.getEmail(), body.getPhone(), body.getAddress());
     }
     @PostMapping(value = "/login", consumes=MediaType.APPLICATION_JSON_VALUE)
     public LoginDto iniciarUsuario(@RequestBody RegistrationDto body) {

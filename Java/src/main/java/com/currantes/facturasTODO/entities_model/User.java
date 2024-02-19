@@ -25,7 +25,10 @@ public class User implements UserDetails {
     private String username;
 
     @Column (nullable = false)
-    private String lastname;
+    private String firstName;
+
+    @Column (nullable = false)
+    private String lastName;
 
     @Column (nullable = false)
     private String dni;
@@ -35,6 +38,9 @@ public class User implements UserDetails {
 
     @Column (nullable = true)
     private String phone;
+
+    @Column (nullable = false)
+    private String email;
 
     @Column (nullable = true)
     private  String address;
@@ -92,15 +98,18 @@ public class User implements UserDetails {
 
     }
 
-    public User(Long idUser, String username, String lastname, String dni, String password, String phone, String address, Set<Role> roles) {
+    public User(Long idUser, String username,String firstName,  String lastName, String dni, String password,String email, String phone, String address, Set<Role> roles) {
         this.idUser = idUser;
         this.username = username;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.dni = dni;
         this.password = password;
         this.phone = phone;
+        this.email = email;
         this.address = address;
         this.roles = roles;
+
     }
 
     public Set<Role> getRoles() {
