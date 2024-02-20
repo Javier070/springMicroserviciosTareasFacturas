@@ -20,9 +20,10 @@ public interface ProyectoService  {
 
 
 
+
     ///////
-    boolean proyectoFinalizado(Long idProyecto);
-    void actualizarEstadoProyecto(Long idProyecto, boolean estado);
+//    boolean proyectoFinalizado(Long idProyecto);
+//    void actualizarEstadoProyecto(Long idProyecto, boolean estado);
     ///////
 }
 

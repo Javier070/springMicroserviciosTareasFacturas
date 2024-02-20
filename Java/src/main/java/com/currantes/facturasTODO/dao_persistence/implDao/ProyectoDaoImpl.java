@@ -7,6 +7,7 @@ import com.currantes.facturasTODO.repository.ProyectoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,9 +24,8 @@ public class ProyectoDaoImpl implements ProyectoDao {// poder implementar lo mé
     }
 
 
-
     @Override
-    public Proyecto buscaPorId(long id) {
+    public Proyecto DevolverProyectoUsandoID(long id) {
         return proyectoRepository.findById(id).orElse(null);
     }
 
@@ -50,6 +50,11 @@ public class ProyectoDaoImpl implements ProyectoDao {// poder implementar lo mé
 
     @Override
     public List<Tarea> obtenerTareasPorProyecto(Long id) {
-        return null;
+        Proyecto proyecto = proyectoRepository.findById(id).orElse(null);
+        if (proyecto != null) {
+            return proyecto.getTareas();
+        } else {
+            return Collections.emptyList();
+        }
     }
 }

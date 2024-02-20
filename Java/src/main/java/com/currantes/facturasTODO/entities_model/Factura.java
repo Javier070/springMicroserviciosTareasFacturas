@@ -1,5 +1,6 @@
 package com.currantes.facturasTODO.entities_model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +25,12 @@ public class Factura {
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
-   // @ManyToOne
+    @JsonIgnoreProperties("Factura")
+    @ManyToOne
+    @JoinColumn( name ="id_user",nullable = false)
+    private User user;
+
+
 
 
 
