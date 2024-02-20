@@ -1,6 +1,7 @@
 package com.currantes.facturasTODO.controllers;
 
 
+import com.currantes.facturasTODO.dao_persistence.UserJpaSpring;
 import com.currantes.facturasTODO.entities_model.Logeo.LoginDto;
 import com.currantes.facturasTODO.entities_model.Logeo.RegistrationDto;
 import com.currantes.facturasTODO.service.seguridad.AuthenticationService;
@@ -20,12 +21,15 @@ public class UserController {
 // que no devuelva todos los campos, solo los que necesitamos (nombre contraseña...)
     @Autowired
     AuthenticationService auService;
+    @Autowired
+    UserJpaSpring userjpa;
 
 
-    @PostMapping(value = "/register", consumes= MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     public User registrarUsuario(@RequestBody RegistrationDto body) {
-        return auService.registrarUsuario(body.getUsername(), body.getFirstName(), body.getLastName(), body.getDni(), body.getPassword(), body.getEmail(), body.getPhone(), body.getAddress());
+        return auService.registrarUsuario(body);
     }
+
     @PostMapping(value = "/login", consumes=MediaType.APPLICATION_JSON_VALUE)
     public LoginDto iniciarUsuario(@RequestBody RegistrationDto body) {
         return auService.loginUsuario(body.getUsername(), body.getPassword());

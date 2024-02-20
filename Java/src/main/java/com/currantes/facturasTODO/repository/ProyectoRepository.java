@@ -13,4 +13,9 @@ public interface ProyectoRepository extends JpaRepository<Proyecto, Long>{
 //    Proyecto DevolverProyectoUsandoID(long id);
     List<Proyecto> findProyectosByUser(User user);
 
+
+
+
 }
+
+
