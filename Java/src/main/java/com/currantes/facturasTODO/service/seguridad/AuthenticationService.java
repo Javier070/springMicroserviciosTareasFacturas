@@ -41,10 +41,11 @@ public class AuthenticationService {
 
     public User registrarUsuario(RegistrationDto body) {
         // Verificar si el usuario ya existe en la base de datos
-        User existingUser = userService.findUserByUsername(body.getUsername());
+        User existingUser = userService.findByUsername(body.getUsername()).orElse(null);
+
         if (existingUser != null) {
-            // Si el usuario ya existe, devolver ese usuario
-            return existingUser;
+            // Si el usuario ya existe, lanzar excepción
+            throw new IllegalStateException("El usuario ya existe");
         } else {
             // Si el usuario no existe, proceder con el registro
             String encodedPassword = passwordEncoder.encode(body.getPassword());
