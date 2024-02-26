@@ -70,7 +70,7 @@ public class Proyecto {
     //RELACION USER
     @ManyToOne
     @JoinColumn( name ="id_user",nullable = false)
-    @JsonIgnore // Esta anotación evita que el campo user se incluya en la serialización JSON
+    //@JsonIgnore // Esta anotación evita que el campo user se incluya en la serialización JSON
     private User user;
 
     //cascade = CascadeType.ALL: hace que las operaciones realizadas en proyecto se propaguen a sus tareas correspondientes
