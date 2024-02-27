@@ -17,6 +17,8 @@ import java.util.Set;
 @Data
 @Setter
 @Entity
+@JsonIgnoreProperties({"roles", "proyectos","authorities",
+"credentialsNonExpired","accountNonExpired","accountNonLocked","enabled"}) //con esto solo se muestran
 public class User implements UserDetails {
 
     @Id
@@ -51,17 +53,13 @@ public class User implements UserDetails {
 ////////////////// relación con la tabla roles
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="role_has_user", joinColumns = {@JoinColumn(name="user_iduser")}, inverseJoinColumns = {@JoinColumn(name="role_idrole")})
-
-    @JsonIgnore /** No se mostrará la tabla de los roles en la respuesta JSON*/
     private Set<Role> roles;
 
     ///////////////////////////////////////////////////
 
 /////////////////////////////// relación con tabla Proyectos
-    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Proyecto> proyectos;
-
     /////////////////
 
 
@@ -122,32 +120,32 @@ public class User implements UserDetails {
     public void setRoles(Role role) {
         this.roles.add(role);
     }
-    @JsonIgnore
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // TODO Auto-generated method stub
         return this.roles;
     }
-    @JsonIgnore
+
     @Override
     public boolean isAccountNonExpired() {
         // TODO Auto-generated method stub
         return true;
     }
-    @JsonIgnore
+
     @Override
     public boolean isAccountNonLocked() {
         // TODO Auto-generated method stub
         return true;
     }
 
-    @JsonIgnore
+
     @Override
     public boolean isCredentialsNonExpired() {
         // TODO Auto-generated method stub
         return true;
     }
-    @JsonIgnore
+
     @Override
     public boolean isEnabled() {
         // TODO Auto-generated method stub

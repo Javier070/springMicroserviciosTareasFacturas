@@ -15,6 +15,8 @@ import java.util.List;
 @Entity
 @Data  //Anotación para generar automáticamente getters, setters y los toString
 
+@JsonIgnoreProperties({"user", "tareas"}) //con esto solo se muestran
+
 public class Proyecto {
 
     @Id
@@ -40,7 +42,6 @@ public class Proyecto {
 
     // RELACION TAREA
    // @JsonManagedReference
-    @JsonIgnoreProperties("proyecto") //ignora el procesamiento de propiedades en este caso proyecto
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();

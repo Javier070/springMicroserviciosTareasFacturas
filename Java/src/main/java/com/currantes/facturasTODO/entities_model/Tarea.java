@@ -11,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @Data
+@JsonIgnoreProperties({"proyecto", "user"}) //con esto solo se muestran
 public class Tarea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +33,7 @@ public class Tarea {
 
     @Column(nullable = false, length = 60)
     private boolean estado;
-    //@JsonManagedReference //pocho
 
-    //@JsonBackReference
-    @JsonIgnoreProperties("tareas")
 
     @ManyToOne
     @JoinColumn(name = "id_proyecto", nullable = false)    //Especificación de la Columna de Clave Foránea:
