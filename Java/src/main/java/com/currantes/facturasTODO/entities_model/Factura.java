@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-public class Factura {
+public abstract  class Factura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long id;
@@ -20,7 +20,7 @@ public class Factura {
     private String nombre;
     private float baseImporte;
     private  float iva;
-    private float total;
+    private float total = baseImporte + iva;
 
     @Temporal(TemporalType.DATE)
     private Date fecha;
@@ -29,10 +29,6 @@ public class Factura {
     @ManyToOne
     @JoinColumn( name ="id_user",nullable = false)
     private User user;
-
-
-
-
 
 
 }
