@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Entity
 @Data
-@JsonIgnoreProperties({"proyecto", "user"}) //con esto solo se muestran
+@JsonIgnoreProperties({ "user"}) //con esto solo se muestran
 public class Tarea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,4 @@
 package com.currantes.facturasTODO.entities_model;
-
 import jakarta.persistence.*;
 import lombok.Data;
 

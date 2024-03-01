@@ -68,7 +68,7 @@ public class User implements UserDetails {
    private List<FacturaVenta> facturasVenta; // Corregido
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<FacturaCompra> facturasCompra;
 
 
