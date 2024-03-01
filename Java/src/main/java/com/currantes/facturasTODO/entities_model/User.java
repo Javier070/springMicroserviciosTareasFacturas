@@ -67,10 +67,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
    private List<FacturaVenta> facturasVenta; // Corregido
 
-//
-//    @OneToMany(mappedBy = "user")
-//    private List<FacturaCompra> facturasCompra;
-//
+
+    @OneToMany(mappedBy = "user")
+    private List<FacturaCompra> facturasCompra;
+
 
 
 
