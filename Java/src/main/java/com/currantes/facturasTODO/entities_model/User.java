@@ -19,11 +19,13 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties({"roles", "proyectos","authorities",
 "credentialsNonExpired","accountNonExpired","accountNonLocked","enabled"}) //con esto solo se muestran
+
+
 public class User implements UserDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long idUser;
 
     @Column (nullable = false)
     private String username;
@@ -62,13 +64,13 @@ public class User implements UserDetails {
     private List<Proyecto> proyectos;
     /////////////////
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
+   private List<FacturaVenta> facturasVenta; // Corregido
 
-
-
-
-
-
-
+//
+//    @OneToMany(mappedBy = "user")
+//    private List<FacturaCompra> facturasCompra;
+//
 
 
 

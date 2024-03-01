@@ -57,6 +57,9 @@ public class WebSecurityConfiguration {
 //            auth.requestMatchers("productos/guadar").hasRole("ADMIN");
 //            auth.requestMatchers("productos/modificar").hasRole("ADMIN");
 //            auth.requestMatchers(HttpMethod.DELETE,"productos/{id}").hasRole("ADMIN");
+            //  auth.requestMatchers(HttpMethod.DELETE,"productos/{id}").hasRole("ADMIN");
+
+
             auth.requestMatchers("/**").permitAll();
 //			auth.requestMatchers("/admin/**").hasRole("ADMIN");
             auth.anyRequest().authenticated();

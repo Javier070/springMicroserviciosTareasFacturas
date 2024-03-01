@@ -23,6 +23,10 @@ public class FacturaServiceImpl implements FacturaService {
         return facturaRepository.findAll();
     }
 
+
+
+
+
     @Override
     public Factura obtenerFacturaPorId(Long id) {
         return facturaRepository.findById(id).orElse(null);
