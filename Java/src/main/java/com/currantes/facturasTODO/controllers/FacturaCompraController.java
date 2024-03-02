@@ -32,8 +32,8 @@ public class FacturaCompraController {
     }
 
     @PostMapping("/modificar")
-    public void modificarFacturaCompra(@PathVariable Long id, @RequestBody FacturaCompra facturaCompra){
-        facturaCompraService.modificarFacturaCompra(id,facturaCompra);
+    public void modificarFacturaCompra(@RequestBody FacturaCompra facturaCompra){
+        facturaCompraService.modificarFacturaCompra(facturaCompra);
     }
 
     @DeleteMapping("/eliminar")

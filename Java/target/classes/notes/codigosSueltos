@@ -1,0 +1,10 @@
+  public User registrarUsuario(String username, String firstName, String lastName, String dni, String password, String email,  String phone, String address) {
+        String encodedPassword = passwordEncoder.encode(password);
+        Role userRole = roleService.findByAuthority("USER").get();
+        Set<Role> authorities = new HashSet<>();
+        authorities.add(userRole);
+        User u1 = new User(0L, username, firstName, lastName, dni, encodedPassword, email, phone, address, authorities);//Si no funciona cambiar de long a int
+        return userService.save(u1);
+    }
+
+    //el registrat usuario del 19/02/2024

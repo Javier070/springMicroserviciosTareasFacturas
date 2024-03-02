@@ -1,5 +1,6 @@
 package com.currantes.facturasTODO.entities_model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -17,8 +18,8 @@ import java.util.Set;
 @Data
 @Setter
 @Entity
-@JsonIgnoreProperties({"roles", "proyectos","authorities",
-"credentialsNonExpired","accountNonExpired","accountNonLocked","enabled"}) //con esto solo se muestran
+@JsonIgnoreProperties({/* "proyectos","factura_compra",*/
+        "authorities", "roles","credentialsNonExpired","accountNonExpired","accountNonLocked","enabled"}) //con esto solo se muestran
 
 
 public class User implements UserDetails {

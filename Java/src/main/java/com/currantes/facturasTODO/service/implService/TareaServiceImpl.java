@@ -50,14 +50,7 @@ public class TareaServiceImpl implements TareaService {
         if (tareaDao.buscaPorIdTareas(tarea.getId())!=null){
             tareaDao.salvaTareas(tarea);
 
-        }else{
-
-
-
         }
-
-
-
     }
 
 

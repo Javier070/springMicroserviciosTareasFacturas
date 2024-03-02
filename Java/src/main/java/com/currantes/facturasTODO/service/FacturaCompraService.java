@@ -1,6 +1,5 @@
 package com.currantes.facturasTODO.service;
 
-import com.currantes.facturasTODO.entities_model.Factura;
 import com.currantes.facturasTODO.entities_model.FacturaCompra;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public interface FacturaCompraService {
 
     public FacturaCompra obtenerFacturaCompraPorId(Long id);
 
-    public void modificarFacturaCompra(Long id, FacturaCompra facturaCompraActualizada);
+    public void modificarFacturaCompra(FacturaCompra facturaCompraActualizada);
 
     public  void eliminarFacturaCompra(Long id);
 }
