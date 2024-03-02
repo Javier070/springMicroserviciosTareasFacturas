@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@JsonIgnoreProperties({ "factura_venta", "facturasVenta"})
 public class Cliente {
 
     @Id

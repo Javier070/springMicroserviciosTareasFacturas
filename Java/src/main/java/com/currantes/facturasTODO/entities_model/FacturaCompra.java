@@ -18,7 +18,7 @@ public class FacturaCompra{
     private String nombre;
     private float baseImporte;
     private float iva;
-    private float total = baseImporte + iva;
+    private float total;
 
     @Temporal(TemporalType.DATE)
     private Date fecha;
@@ -31,5 +31,4 @@ public class FacturaCompra{
     @ManyToOne
     @JoinColumn(name ="id_proveedor", nullable = false)
     private Proveedor proveedor;
-
 }

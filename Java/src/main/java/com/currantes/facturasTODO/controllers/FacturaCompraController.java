@@ -1,6 +1,5 @@
 package com.currantes.facturasTODO.controllers;
 
-import com.currantes.facturasTODO.entities_model.Factura;
 import com.currantes.facturasTODO.entities_model.FacturaCompra;
 import com.currantes.facturasTODO.service.FacturaCompraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class FacturaCompraController {
         facturaCompraService.modificarFacturaCompra(facturaCompra);
     }
 
-    @DeleteMapping("/eliminar")
+    @DeleteMapping("/eliminar/{id}")
     public  void elimnarFacturaCompra(@PathVariable Long id){
         facturaCompraService.eliminarFacturaCompra(id);
     }

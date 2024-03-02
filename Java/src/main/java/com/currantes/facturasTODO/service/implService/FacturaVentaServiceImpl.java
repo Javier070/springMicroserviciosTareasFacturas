@@ -1,7 +1,6 @@
 package com.currantes.facturasTODO.service.implService;
 
 import com.currantes.facturasTODO.entities_model.Factura;
-import com.currantes.facturasTODO.entities_model.FacturaCompra;
 import com.currantes.facturasTODO.entities_model.FacturaVenta;
 import com.currantes.facturasTODO.repository.FacturaVentaRepository;
 import com.currantes.facturasTODO.service.FacturaVentaService;
@@ -18,11 +17,12 @@ public class FacturaVentaServiceImpl implements FacturaVentaService {
 
     @Override
     public FacturaVenta saveFacturaVenta (FacturaVenta facturaVenta) {
+        calcularTotalVenta(facturaVenta);
         return facturaVentaRepository.save(facturaVenta);
     }
 
     @Override
-    public List<FacturaVenta> listarTodasFacturasFacturaVentas() {
+    public List<FacturaVenta> listarTodasFacturasFacturaVenta() {
         return facturaVentaRepository.findAll();
     }
 
@@ -31,19 +31,15 @@ public class FacturaVentaServiceImpl implements FacturaVentaService {
         return facturaVentaRepository.findById(id).orElseThrow();
     }
 
+
+
     @Override
-    public void modificarFacturaVenta(Long id, Factura facturaVentaActualizada) {
-        FacturaVenta facturaVenta = facturaVentaRepository.findById(id).orElseThrow();
-        if (facturaVenta != null) {
-            facturaVenta.setNombre(facturaVentaActualizada.getNombre());
-            facturaVenta.setBaseImporte(facturaVentaActualizada.getBaseImporte());
-            facturaVenta.setIva(facturaVentaActualizada.getIva());
-            facturaVenta.setTotal(facturaVentaActualizada.getTotal());
-            facturaVenta.setFecha(facturaVentaActualizada.getFecha());
-            facturaVenta.setUser(facturaVentaActualizada.getUser());
+    public void modificarFacturaVenta(FacturaVenta facturaVenta) {
+        if (facturaVentaRepository.findById(facturaVenta.getIdFacturaVenta()).isPresent()) {
+            calcularTotalVenta(facturaVenta);
             facturaVentaRepository.save(facturaVenta);
         } else {
-            throw new IllegalArgumentException("La factura compra con ID " + id + " no existe.");
+            throw new IllegalArgumentException("La factura de compra con ID " + facturaVenta.getIdFacturaVenta() + " no existe.");
         }
     }
 
@@ -51,5 +47,10 @@ public class FacturaVentaServiceImpl implements FacturaVentaService {
     public void eliminarFacturaVenta(Long id) {
         facturaVentaRepository.deleteById(id);
 
+    }
+
+    private void calcularTotalVenta(FacturaVenta facturaVenta) {
+        float total = facturaVenta.getBaseImporte() - facturaVenta.getIva();
+        facturaVenta.setTotal(total);
     }
 }

@@ -13,7 +13,9 @@ public interface FacturaCompraService {
 
     public FacturaCompra obtenerFacturaCompraPorId(Long id);
 
-    public void modificarFacturaCompra(FacturaCompra facturaCompraActualizada);
+    public void modificarFacturaCompra(FacturaCompra facturaCompra);
 
     public  void eliminarFacturaCompra(Long id);
+
+
 }
