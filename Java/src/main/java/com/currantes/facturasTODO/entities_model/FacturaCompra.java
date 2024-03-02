@@ -1,4 +1,5 @@
 package com.currantes.facturasTODO.entities_model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,6 +25,7 @@ public class FacturaCompra{
 
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
+    @JsonIgnoreProperties({"firstName", "lastName", "dni", "password", "phone", "email", "address"})// ignoramos campos específicos
     private User user;
 
     @ManyToOne

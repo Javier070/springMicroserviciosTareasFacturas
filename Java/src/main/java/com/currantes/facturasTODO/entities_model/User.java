@@ -18,7 +18,8 @@ import java.util.Set;
 @Data
 @Setter
 @Entity
-@JsonIgnoreProperties({/* "proyectos","factura_compra",*/
+@JsonIgnoreProperties({"proyectos", // ya no se ven los proyectos que tiene asociado un user
+        "facturasCompra","facturasVenta", // asi esta bien escrito
         "authorities", "roles","credentialsNonExpired","accountNonExpired","accountNonLocked","enabled"}) //con esto solo se muestran
 
 

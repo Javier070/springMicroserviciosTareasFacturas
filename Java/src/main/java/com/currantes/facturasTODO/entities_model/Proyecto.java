@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 @Data  //Anotación para generar automáticamente getters, setters y los toString
 
-@JsonIgnoreProperties({"user", "tareas"}) //con esto solo se muestran
+@JsonIgnoreProperties({ "tareas"}) //con esto solo se muestran
 
 public class Proyecto {
 

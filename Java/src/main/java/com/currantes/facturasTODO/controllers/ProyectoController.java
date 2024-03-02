@@ -25,6 +25,15 @@ public class ProyectoController {
       return proyectoService.TareasPorProyecto(id);
    }
 
+   @GetMapping("/proyectosPorUsuario/{id}")
+   public List<Proyecto> obtenerProyectosPorUsuario(@PathVariable Long id) {
+      User user = new User();
+      user.setIdUser(id);
+      return proyectoRepository.findProyectosByUser(user);
+   }
+
+   ///////////////////////////////////////////////////////////
+
    @GetMapping(value = "/listaProyectos")
    public List<Proyecto> listaTodoProyectos() {
       return proyectoService.listaTodoProyectos();
@@ -53,10 +62,5 @@ public class ProyectoController {
 
    /////////////////////////////////////
 
-   @GetMapping("/proyectosPorUsuario/{id}")
-   public List<Proyecto> obtenerProyectosPorUsuario(@PathVariable Long id) {
-      User user = new User();
-      user.setIdUser(id);
-      return proyectoRepository.findProyectosByUser(user);
-   }
+
 }

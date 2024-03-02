@@ -1,11 +1,16 @@
 package com.currantes.facturasTODO.entities_model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
 @Entity
 @Data
+@JsonIgnoreProperties({ "factura_compra", "facturasCompra"})
+
+
+
 public class Proveedor {
 
 

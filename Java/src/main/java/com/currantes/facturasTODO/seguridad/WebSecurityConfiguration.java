@@ -53,7 +53,7 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> {
-            auth.requestMatchers("/proyecto/**").hasRole("USER");
+//            auth.requestMatchers("/proyecto/**").hasRole("USER");
 //            auth.requestMatchers("productos/guadar").hasRole("ADMIN");
 //            auth.requestMatchers("productos/modificar").hasRole("ADMIN");
 //            auth.requestMatchers(HttpMethod.DELETE,"productos/{id}").hasRole("ADMIN");
