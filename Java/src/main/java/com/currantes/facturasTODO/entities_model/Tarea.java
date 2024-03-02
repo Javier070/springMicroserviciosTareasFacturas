@@ -11,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @Data
+
 public class Tarea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +37,7 @@ public class Tarea {
 
     @ManyToOne
     @JoinColumn(name = "id_proyecto", nullable = false)    //Especificación de la Columna de Clave Foránea:
+    @JsonIgnoreProperties({"nombre", "descripcion", "fecha_final", "fecha_esperada", "estado", "user"})
     private Proyecto proyecto;
 
     public Tarea() {
