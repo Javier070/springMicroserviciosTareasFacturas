@@ -1,6 +1,9 @@
 package com.currantes.facturasTODO.controllers;
 
 import com.currantes.facturasTODO.entities_model.FacturaCompra;
+import com.currantes.facturasTODO.entities_model.User;
+import com.currantes.facturasTODO.repository.FacturaCompraRepository;
+import com.currantes.facturasTODO.repository.ProyectoRepository;
 import com.currantes.facturasTODO.service.FacturaCompraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,18 @@ public class FacturaCompraController {
 
     @Autowired
     FacturaCompraService facturaCompraService;
+
+    @Autowired
+    private FacturaCompraRepository facturaCompraRepository;
+
+
+
+    @GetMapping("/cantidadFacturasPorUsuario/{id}")
+    public List<FacturaCompra> obtenerCantidadFacturasCompraPorUsuario(@PathVariable Long id) {
+        User user = new User();
+        user.setIdUser(id);
+        return facturaCompraRepository.findFacturaCompraByUser(user);
+    }
 
     @GetMapping("/buscarPorId/{id}")
     public FacturaCompra obtenerFacturaCompraPorId(@PathVariable Long id){
