@@ -1,6 +1,4 @@
 package com.currantes.facturasTODO.entities_model;
-
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,7 +13,7 @@ import java.util.List;
 @Entity
 @Data  //Anotación para generar automáticamente getters, setters y los toString
 
-@JsonIgnoreProperties({ "tareas"}) //con esto solo se muestran
+@JsonIgnoreProperties({ "tareas"})
 
 public class Proyecto {
 
@@ -38,11 +36,8 @@ public class Proyecto {
 
     @Column(length = 600)
     private Boolean estado = false;
-   // @JsonBackReference //pocho
 
-    // RELACION TAREA
-   // @JsonManagedReference
-
+    //RELACIONAR TAREAS
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Tarea> tareas =new ArrayList<>();
 
@@ -63,21 +58,22 @@ public class Proyecto {
          * ESTO SOLO ES NECESARIO EN LAS RELACIONES DE MUCHOS A MUCHOS
          */
 
-    } //Explicacion mappedBy
+    } //Explicado mappedBy
 
 
 
 
-    //RELACION USER
+    //RELACIONAR USER
     @ManyToOne
     @JoinColumn( name ="id_user",nullable = false)
     @JsonIgnoreProperties({"username","firstName", "lastName", "dni", "password", "phone", "email", "address"})// ignoramos campos específicos
-
     private User user;
 
-    //cascade = CascadeType.ALL: hace que las operaciones realizadas en proyecto se propaguen a sus tareas correspondientes
-    //orphanRemoval = true: Elimina automáticamente las Tareas que ya no están asociadas a ningún Proyecto cuando se eliminan el proyecyo.
-    //FetchType.LAZY
+    {
+        //cascade = CascadeType.ALL: hace que las operaciones realizadas en proyecto se propaguen a sus tareas correspondientes
+        //orphanRemoval = true: Elimina automáticamente las Tareas que ya no están asociadas a ningún Proyecto cuando se eliminan el proyecyo
+    } // explicando OneToMany
+
     public Proyecto() {
     }
 

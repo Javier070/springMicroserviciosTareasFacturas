@@ -48,13 +48,4 @@ public class ProyectoDaoImpl implements ProyectoDao {// poder implementar lo mé
         proyectoRepository.save(proyecto);
     }
 
-    @Override
-    public List<Tarea> obtenerTareasPorProyecto(Long id) {
-        Proyecto proyecto = proyectoRepository.findById(id).orElse(null);
-        if (proyecto != null) {
-            return proyecto.getTareas();
-        } else {
-            return Collections.emptyList();
-        }
-    }
 }

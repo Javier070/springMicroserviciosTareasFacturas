@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProyectoService  {
+    List<Tarea> TareasPorProyecto(Long id);
+
+    List<Proyecto> obtenerProyectosPorUsuario(Long id);
+
+
 
     List<Proyecto> listaTodoProyectos();
     Proyecto buscaPorId(long id);
@@ -16,7 +21,7 @@ public interface ProyectoService  {
 
     void modificar(Proyecto proyecto);
 
-    List<Tarea> TareasPorProyecto(Long id);
+
 
 
 

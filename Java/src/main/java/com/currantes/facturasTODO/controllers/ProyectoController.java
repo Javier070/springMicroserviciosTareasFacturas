@@ -11,14 +11,13 @@ import com.currantes.facturasTODO.entities_model.Proyecto;
 import java.util.List;
 
 @RestController
-@RequestMapping("/proyecto")
+@RequestMapping("/proyecto")// asigna todas las solicitudes dirigidas a /proyecto
 public class ProyectoController {
 
    @Autowired
    private ProyectoService proyectoService;
 
-   @Autowired
-   private ProyectoRepository proyectoRepository;
+
 
    @GetMapping(value = "/{id}/tareas")
    public List<Tarea> TareasPorProyecto(@PathVariable Long id) {
@@ -27,9 +26,7 @@ public class ProyectoController {
 
    @GetMapping("/proyectosPorUsuario/{id}")
    public List<Proyecto> obtenerProyectosPorUsuario(@PathVariable Long id) {
-      User user = new User();
-      user.setIdUser(id);
-      return proyectoRepository.findProyectosByUser(user);
+      return proyectoService.obtenerProyectosPorUsuario(id);
    }
 
    ///////////////////////////////////////////////////////////

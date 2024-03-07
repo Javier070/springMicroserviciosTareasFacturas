@@ -4,6 +4,7 @@ import com.currantes.facturasTODO.dao_persistence.ProyectoDao;
 import com.currantes.facturasTODO.entities_model.Proyecto;
 import com.currantes.facturasTODO.entities_model.Tarea;
 import com.currantes.facturasTODO.entities_model.User;
+import com.currantes.facturasTODO.repository.ProyectoRepository;
 import com.currantes.facturasTODO.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class ProyectoServiceImpl implements ProyectoService {
 
    @Autowired
    ProyectoDao proyectoDao; // gracias a esto puedo aaceder a los métodos del DAO
+
+    @Autowired
+    private ProyectoRepository proyectoRepository;
     @Override
     public List<Proyecto> listaTodoProyectos() {
         return proyectoDao.listaTodoProyectos();
@@ -70,7 +74,14 @@ public class ProyectoServiceImpl implements ProyectoService {
         }
     }
 
+    @Override
+    public List<Proyecto> obtenerProyectosPorUsuario(Long id) {
+        User user = new User();
+        user.setIdUser(id);
+        return proyectoRepository.findProyectosByUser(user);
     }
+
+}
 
 
 

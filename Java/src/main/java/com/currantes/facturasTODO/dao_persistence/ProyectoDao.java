@@ -14,7 +14,7 @@ public interface ProyectoDao {
     void  eliminaPorID(long id);
     void modificar(Proyecto proyecto);
 
-    List<Tarea> obtenerTareasPorProyecto(Long id);
+
 
 
 
