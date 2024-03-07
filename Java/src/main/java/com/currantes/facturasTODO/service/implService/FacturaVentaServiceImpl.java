@@ -1,6 +1,7 @@
 package com.currantes.facturasTODO.service.implService;
 
 import com.currantes.facturasTODO.entities_model.Factura;
+import com.currantes.facturasTODO.entities_model.FacturaCompra;
 import com.currantes.facturasTODO.entities_model.FacturaVenta;
 import com.currantes.facturasTODO.repository.FacturaVentaRepository;
 import com.currantes.facturasTODO.service.FacturaVentaService;
@@ -50,7 +51,10 @@ public class FacturaVentaServiceImpl implements FacturaVentaService {
     }
 
     private void calcularTotalVenta(FacturaVenta facturaVenta) {
-        float total = facturaVenta.getBaseImporte() - facturaVenta.getIva();
+        float iva = facturaVenta.getBaseImporte() * 0.21f;
+        facturaVenta.setIva(iva);
+
+        float total = facturaVenta.getBaseImporte() + iva;
         facturaVenta.setTotal(total);
     }
 }

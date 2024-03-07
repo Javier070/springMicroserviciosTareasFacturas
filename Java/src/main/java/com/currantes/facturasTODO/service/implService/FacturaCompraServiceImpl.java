@@ -66,10 +66,12 @@ public class FacturaCompraServiceImpl implements FacturaCompraService {
     }
 
     private void calcularTotalCompra(FacturaCompra facturaCompra) {
-        float total = facturaCompra.getBaseImporte() - facturaCompra.getIva();
+        float iva = facturaCompra.getBaseImporte() * 0.21f;
+        facturaCompra.setIva(iva);
+
+        float total = facturaCompra.getBaseImporte() + iva;
         facturaCompra.setTotal(total);
     }
-
 
 
 }
